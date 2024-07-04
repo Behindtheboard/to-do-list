@@ -182,6 +182,7 @@ html {
 body {
     display: grid;
     grid-template: 100vh / 30vw 70vw;
+    font: white;
 }
 
 #container, #list-display {
@@ -190,7 +191,7 @@ body {
 
 #sidebar {
     grid-area: 1 / 1;
-    background-color: antiquewhite;
+    background-color: rgb(98, 97, 97);
 }
 
 #container {
