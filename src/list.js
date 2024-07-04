@@ -1,5 +1,4 @@
 export default function list(title) {
-    const title = title;
     const taskList = {};
     
     const newTask = function(task) {

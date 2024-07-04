@@ -6,7 +6,7 @@ export default function displayList(list) {
     container.appendChild(listDisplay);
 
     const listTitle = document.createElement('h2');
-    listTitle.textContent = list.title; 
+    listTitle.textContent = `${list}`; 
     listDisplay.appendChild(listHeader);
 
     // const taskListDisplay = document.createElement('div')
