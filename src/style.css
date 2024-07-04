@@ -181,11 +181,16 @@ html {
 
 body {
     display: grid;
-    grid-template: 1fr / 30vw 70vw
+    grid-template: 100vh / 30vw 70vw;
 }
 
 #container, #list-display {
     display: flex;
+}
+
+#sidebar {
+    grid-area: 1 / 1;
+    background-color: antiquewhite;
 }
 
 #container {

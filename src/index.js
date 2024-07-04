@@ -1,3 +1,4 @@
+import './style.css'
 import list from './list.js';
 import displayList from './displayList.js';
 import Task from './task.js';
