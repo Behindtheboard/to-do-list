@@ -1,10 +1,10 @@
-export default function list(name) {
-    const name = name;
+export default function list(title) {
+    const title = title;
     const taskList = {};
     
     const newTask = function(task) {
         taskList.push(task);
     }
 
-    return {name, taskList, newTask};
+    return {title, taskList, newTask};
 }
