@@ -1,10 +1,10 @@
 export default function list(name) {
     const name = name;
-    const list = {};
+    const taskList = {};
     
     const newTask = function(task) {
-        list.push(task);
+        taskList.push(task);
     }
 
-    return {name, newToDo};
+    return {name, taskList, newTask};
 }

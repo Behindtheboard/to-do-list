@@ -7,5 +7,4 @@ export default class Task {
     finished() {
         this.done = true;
     }
-
 }
