@@ -1,5 +1,5 @@
 /* CSS Reset */
-html {
+    html {
     line-height: 1; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
     }
@@ -182,11 +182,14 @@ html {
 body {
     display: grid;
     grid-template: 100vh / 30vw 70vw;
-    font: white;
+    color: white;
+    font-size: 16px;
 }
 
 #container, #list-display {
     display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
 #sidebar {
