@@ -1,5 +1,5 @@
 export default function list(title) {
-    const taskList = {};
+    const taskList = [];
     
     const newTask = function(task) {
         taskList.push(task);

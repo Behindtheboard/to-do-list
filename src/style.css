@@ -186,7 +186,7 @@ body {
     font-size: 16px;
 }
 
-#container, #list-display {
+#container, #list-display, #task-list-display {
     display: flex;
     flex-direction: column;
     justify-content: start;
