@@ -4,6 +4,7 @@ export default function displayTask(list) {
         const taskDisplay = document.createElement('div');
         taskDisplay.setAttribute('id', 'task');
         taskListDisplay.appendChild(taskDisplay);
+        
         const taskCheckbox = document.createElement('input');
         taskCheckbox.setAttribute('type', 'checkbox')
         taskCheckbox.setAttribute('id', 'task')
