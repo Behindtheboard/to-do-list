@@ -180,28 +180,31 @@
     }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('Montserrat-Thin.woff2') format('woff2'),
-        url('Montserrat-Thin.woff') format('woff');
-    font-weight: 100;
+    font-family: 'Open Sans';
+    src: url('OpenSans-Regular.woff2') format('woff2'),
+        url('OpenSans-Regular.woff') format('woff');
+    font-weight: 600;
     font-style: normal;
     font-display: swap;
 }
-    
-    
 
 body {
     display: grid;
     grid-template: 100vh / 30vw 70vw;
     color: white;
-    font-family: 'Montserrat';
+    font-family: 'Open Sans';
     font-size: 16px;
 }
 
-#container, #list-display, #task-list-display {
+#container, #sidebar, #list-display, #task-list-display, [id$="-display"] {
     display: flex;
     flex-direction: column;
     justify-content: start;
+}
+
+h1, h2 {
+    font-size: 2rem;
+    text-align: center;
 }
 
 #sidebar {
@@ -212,4 +215,23 @@ body {
 #container {
     grid-area: 1 / 2;
     background-color: black;
+}
+
+[id$="-list-display"] {
+    align-items: center;
+}
+
+
+[id$="task-display"] {
+    min-width: 200px;
+    max-width: 600px;
+    width: 50%;
+}
+
+#task {
+    padding: 10px;
+}
+
+#task label {
+    padding-left: 10px;
 }

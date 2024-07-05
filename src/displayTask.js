@@ -7,7 +7,7 @@ export default function displayTask(list) {
         
         const taskCheckbox = document.createElement('input');
         taskCheckbox.setAttribute('type', 'checkbox')
-        taskCheckbox.setAttribute('id', 'task')
+        taskCheckbox.setAttribute('id', 'taskCheckbox')
         taskCheckbox.setAttribute('value', 'true')
         const taskLabel = document.createElement('label');
         taskLabel.setAttribute('for', 'task')
