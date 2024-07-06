@@ -19,6 +19,8 @@ console.log(defaultList.taskList)
 displayList(defaultList);
 displayTask(defaultList);
 
-listLibrary().addList('defaultList');
-console.log(listLibrary().library);
-displayListLibrary(listLibrary());
+const toDoLists = listLibrary();
+toDoLists.addList(defaultList);
+
+console.log(toDoLists.library);
+displayListLibrary(toDoLists);
