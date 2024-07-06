@@ -10,8 +10,6 @@ const defaultList = list('Default');
 const cleanUpRoom = new Task('New Task')
 const dohw = new Task('do hw')
 
-listLibrary().addList(defaultList);
-
 defaultList.newTask(cleanUpRoom);
 defaultList.newTask(dohw);
 
@@ -20,4 +18,7 @@ console.log(defaultList.taskList)
 
 displayList(defaultList);
 displayTask(defaultList);
-displayListLibrary(defaultList)
+
+listLibrary().addList('defaultList');
+console.log(listLibrary().library);
+displayListLibrary(listLibrary());

@@ -1,8 +1,12 @@
 export default function listLibrary() {
-    const library = []
+    const library = [];
 
     const addList = function(list) {
         library.push(list);
     }
-    return {library, addList}
+
+    const getLibrary = function() {
+        return library;
+    }
+    return {library, getLibrary, addList};
 }
