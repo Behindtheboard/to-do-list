@@ -6,21 +6,25 @@ import displayTask from './displayTask.js';
 import listLibrary from './listLibrary.js';
 import displayListLibrary from './displayListLibrary.js';
 
+const toDoLists = listLibrary();
+
 const defaultList = list('Default');
+const grocerylist = list('groceries');
 const cleanUpRoom = new Task('New Task')
 const dohw = new Task('do hw')
+
+const apple = new Task('apple');
 
 defaultList.newTask(cleanUpRoom);
 defaultList.newTask(dohw);
 
-console.log(cleanUpRoom.name)
-console.log(defaultList.taskList)
+grocerylist.newTask(apple);
+console.log(grocerylist.taskList)
 
-displayList(defaultList);
-displayTask(defaultList);
+displayList(grocerylist);
+displayTask(grocerylist);
 
-const toDoLists = listLibrary();
 toDoLists.addList(defaultList);
-
+toDoLists.addList(grocerylist);
 console.log(toDoLists.library);
 displayListLibrary(toDoLists);
