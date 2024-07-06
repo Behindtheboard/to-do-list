@@ -5,6 +5,7 @@ export default function displayListLibrary(obj) {
 
     obj.library.forEach((list) => {
         const listSidebar = document.createElement('button');
+        listSidebar.setAttribute('id', `${list.name.replace(/\s+/g, '')}-list-button`);
         listSidebar.textContent = list.name;
         listLibraryDisplay.appendChild(listSidebar);
     });
