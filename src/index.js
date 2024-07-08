@@ -5,6 +5,7 @@ import Task from './task.js';
 import displayTask from './displayTask.js';
 import listLibrary from './listLibrary.js';
 import displayListLibrary from './displayListLibrary.js';
+import listLibraryHandler from './listLibraryHandler.js';
 
 const toDoLists = listLibrary();
 
@@ -28,3 +29,4 @@ toDoLists.addList(defaultList);
 toDoLists.addList(grocerylist);
 console.log(toDoLists.library);
 displayListLibrary(toDoLists);
+listLibraryHandler(toDoLists)
