@@ -13,4 +13,9 @@ export default function displayList(list) {
     const taskListDisplay = document.createElement('div')
     taskListDisplay.setAttribute('id', `${list.name.replace(/\s+/g, '')}-task-display`)
     listDisplay.appendChild(taskListDisplay);
+
+    const newTaskButton = document.createElement('button');
+    newTaskButton.setAttribute('id', 'new-task-button');
+    newTaskButton.textContent = "New Task";
+    listDisplay.appendChild(newTaskButton);
 }

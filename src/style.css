@@ -223,16 +223,21 @@ h1, h2 {
 }
 
 
-[id$="task-display"] {
+[id$="task-display"], #new-task-button {
     min-width: 200px;
     max-width: 600px;
     width: 50%;
 }
 
+#new-task-button {
+    height: 32px;
+}
+
 #task {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     height: 30px;
 }
 
