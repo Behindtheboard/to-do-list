@@ -1,4 +1,7 @@
-export default function newTaskModalHandler() {
+import Task from './task.js';
+import displayTask from './displayTask.js';
+
+export default function newTaskModalHandler(obj) {
 
     const newTaskDialog = document.createElement('dialog');
     newTaskDialog.setAttribute('id', 'new-task-dialog');
@@ -64,5 +67,12 @@ export default function newTaskModalHandler() {
 
     document.querySelector('#new-task-button').addEventListener('click', () => {
         newTaskDialog.showModal();
+    });
+    obj.library.forEach((list) =>{
+        document.querySelector('#add-task-button').addEventListener('click', () => {
+            const newTask = new Task(taskNameInput.value);
+            list.newTask(newTask);
+            displayTask(list);
+        });
     });
 }
