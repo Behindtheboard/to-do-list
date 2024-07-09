@@ -14,5 +14,10 @@ export default function displayTask(list) {
         taskLabel.textContent = obj.name;
         taskDisplay.appendChild(taskCheckbox);
         taskDisplay.appendChild(taskLabel);
+
+        const infoButton = document.createElement('button');
+        infoButton.setAttribute('id', `${obj.name.replace(/\s+/g, '')}-info-button`);
+        infoButton.textContent = 'i'
+        taskDisplay.appendChild(infoButton);
     });
 }
