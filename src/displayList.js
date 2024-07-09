@@ -18,4 +18,4 @@ export default function displayList(list) {
     newTaskButton.setAttribute('id', 'new-task-button');
     newTaskButton.textContent = "New Task";
     listDisplay.appendChild(newTaskButton);
-}
+};

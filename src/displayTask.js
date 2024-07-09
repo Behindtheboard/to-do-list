@@ -19,5 +19,7 @@ export default function displayTask(list) {
         infoButton.setAttribute('id', `${obj.name.replace(/\s+/g, '')}-info-button`);
         infoButton.textContent = 'i'
         taskDisplay.appendChild(infoButton);
+
+        
     });
 }
