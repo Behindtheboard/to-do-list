@@ -203,7 +203,7 @@ body {
 }
 
 h1, h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -230,9 +230,25 @@ h1, h2 {
 }
 
 #task {
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
+    height: 30px;
+}
+
+[id$="-checkbox"] {
+    height: 32px;
+    width: 32px;
 }
 
 #task label {
-    padding-left: 10px;
+    align-self: center;
+    font-size: 1.5rem;
+}
+
+[id$="info-button"] {
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    border: none;
 }
