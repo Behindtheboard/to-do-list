@@ -1,6 +1,7 @@
 export default function displayTask(list) {
     list.taskList.forEach((obj) => {
         const taskListDisplay = document.querySelector(`#${`${list.name.replace(/\s+/g, '')}-task-display`}`)
+        
         const taskDisplay = document.createElement('div');
         taskDisplay.setAttribute('id', 'task');
         taskListDisplay.appendChild(taskDisplay);

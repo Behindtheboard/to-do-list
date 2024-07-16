@@ -68,11 +68,14 @@ export default function newTaskModalHandler(obj) {
     document.querySelector('#new-task-button').addEventListener('click', () => {
         newTaskDialog.showModal();
     });
+
     obj.library.forEach((list) =>{
         document.querySelector('#add-task-button').addEventListener('click', () => {
             const newTask = new Task(taskNameInput.value);
             list.newTask(newTask);
+            document.querySelector(`#${`${list.name.replace(/\s+/g, '')}-task-display`}`).textContent = '';
             displayTask(list);
+            console.log(list.taskList);
         });
     });
 }
