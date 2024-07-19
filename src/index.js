@@ -20,10 +20,6 @@ displayTask(defaultList);
 
 toDoLists.addList(defaultList);
 
-const grocerylist = list('groceries');
-const apple = new Task('apple');
-grocerylist.newTask(apple);
-toDoLists.addList(grocerylist);
 
 displayListLibrary(toDoLists);
 listLibraryHandler(toDoLists);

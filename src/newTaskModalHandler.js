@@ -30,6 +30,9 @@ export default function newTaskModalHandler(obj) {
     prioritySelect.setAttribute('name', 'priority');
     prioritySelect.setAttribute('id', 'priority-input');
 
+    const optionNo = document.createElement('option');
+    optionNo.setAttribute('value', '0');
+    optionNo.textContent = 'No';
     const optionLow = document.createElement('option');
     optionLow.setAttribute('value', '1');
     optionLow.textContent = 'Low';
@@ -40,6 +43,7 @@ export default function newTaskModalHandler(obj) {
     optionHigh.setAttribute('value', '3');
     optionHigh.textContent = 'High';
 
+    prioritySelect.appendChild(optionNo);
     prioritySelect.appendChild(optionLow);
     prioritySelect.appendChild(optionMid);
     prioritySelect.appendChild(optionHigh);
