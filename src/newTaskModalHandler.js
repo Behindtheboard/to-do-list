@@ -2,7 +2,6 @@ import Task from './task.js';
 import displayTask from './displayTask.js';
 
 export default function newTaskModalHandler(obj) {
-
     const newTaskDialog = document.createElement('dialog');
     newTaskDialog.setAttribute('id', 'new-task-dialog');
     document.querySelector('#container').appendChild(newTaskDialog);
@@ -48,6 +47,17 @@ export default function newTaskModalHandler(obj) {
     priorityDiv.appendChild(priorityLabel);
     priorityDiv.appendChild(prioritySelect);
 
+    const dateDiv = document.createElement('div');
+    const dueDateLabel = document.createElement('label');
+    dueDateLabel.setAttribute('for', 'due-date-input');
+    dueDateLabel.textContent = 'Due Date:';
+    const dueDateInput = document.createElement('input');
+    dueDateInput.setAttribute('type', 'date');
+    dueDateInput.setAttribute('id', 'due-date-input');
+
+    dateDiv.appendChild(dueDateLabel);
+    dateDiv.appendChild(dueDateInput);
+    
     const buttonDiv = document.createElement('div');
     const addTaskButton = document.createElement('button');
     addTaskButton.setAttribute('type', 'submit');
@@ -63,6 +73,7 @@ export default function newTaskModalHandler(obj) {
 
     newTaskForm.appendChild(taskNameDiv);
     newTaskForm.appendChild(priorityDiv);
+    newTaskForm.appendChild(dateDiv);
     newTaskForm.appendChild(buttonDiv);
 
     document.querySelector('#new-task-button').addEventListener('click', () => {
@@ -71,11 +82,11 @@ export default function newTaskModalHandler(obj) {
 
     obj.library.forEach((list) =>{
         document.querySelector('#add-task-button').addEventListener('click', () => {
+            document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
+
             const newTask = new Task(taskNameInput.value);
             list.newTask(newTask);
-            document.querySelector(`#${`${list.name.replace(/\s+/g, '')}-task-display`}`).textContent = '';
             displayTask(list);
-            console.log(list.taskList);
         });
     });
 }

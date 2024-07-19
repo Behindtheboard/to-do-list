@@ -7,6 +7,7 @@ import listLibrary from './listLibrary.js';
 import displayListLibrary from './displayListLibrary.js';
 import listLibraryHandler from './listLibraryHandler.js';
 import newTaskModalHandler from './newTaskModalHandler.js';
+import newListHandler from './newListHandler.js';
 
 const toDoLists = listLibrary();
 
@@ -25,5 +26,6 @@ grocerylist.newTask(apple);
 toDoLists.addList(grocerylist);
 
 displayListLibrary(toDoLists);
-listLibraryHandler(toDoLists)
+listLibraryHandler(toDoLists);
+newListHandler(toDoLists);
 newTaskModalHandler(toDoLists);
