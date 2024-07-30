@@ -84,11 +84,11 @@ export default function newTaskModalHandler(obj) {
         newTaskDialog.showModal();
     });
 
-    obj.library.forEach((list) =>{
+    // obj.library.forEach((list) =>{
         document.querySelector('#add-task-button').addEventListener('click', () => {
             if (taskNameInput.value !== '') {
                 document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
-                
+
                 const newTask = new Task(taskNameInput.value);
                 newTask.setPriority(prioritySelect.value);
                 newTask.setDueDate(dueDateInput.value);
@@ -97,5 +97,5 @@ export default function newTaskModalHandler(obj) {
                 displayTask(list);
             }
         });
-    });
+    // });
 }
