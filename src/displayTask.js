@@ -1,5 +1,5 @@
 export default function displayTask(list) {
-    list.taskList.forEach((obj) => {
+    list.taskList.forEach((task) => {
         const taskListDisplay = document.querySelector(`#${`${list.name.replace(/\s+/g, '')}-task-display`}`)
         
         const taskDisplay = document.createElement('div');
@@ -8,27 +8,27 @@ export default function displayTask(list) {
         
         const taskCheckbox = document.createElement('input');
         taskCheckbox.setAttribute('type', 'checkbox')
-        taskCheckbox.setAttribute('id', `${obj.name.replace(/\s+/g, '')}-checkbox`)
+        taskCheckbox.setAttribute('id', `${task.name.replace(/\s+/g, '')}-checkbox`)
         taskCheckbox.setAttribute('value', 'true')
         taskDisplay.appendChild(taskCheckbox);
         
         const taskLabel = document.createElement('label');
         taskLabel.setAttribute('for', 'task')
-        taskLabel.textContent = obj.name;
+        taskLabel.textContent = task.name;
         taskDisplay.appendChild(taskLabel);
 
         const taskPriorityDisplay = document.createElement('div');
         taskPriorityDisplay.setAttribute('id', 'task-priority-display');
-        taskPriorityDisplay.textContent = obj.getPriority();
+        taskPriorityDisplay.textContent = task.getPriority();
         taskDisplay.appendChild(taskPriorityDisplay);
         
         const taskDueDateDisplay = document.createElement('div');
         taskDueDateDisplay.setAttribute('id', 'task-due-date-display');
-        taskDueDateDisplay.textContent = obj.getDueDate();
+        taskDueDateDisplay.textContent = task.getDueDate();
         taskDisplay.appendChild(taskDueDateDisplay);
 
         const infoButton = document.createElement('button');
-        infoButton.setAttribute('id', `${obj.name.replace(/\s+/g, '')}-info-button`);
+        infoButton.setAttribute('id', `${task.name.replace(/\s+/g, '')}-info-button`);
         infoButton.textContent = 'i'
         taskDisplay.appendChild(infoButton);
     });
