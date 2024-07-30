@@ -2,7 +2,7 @@ export default class Task {
     constructor(name) {
         this.name = name;
         this.done = false;
-        this.priority = 'low';
+        this.priority = 'Low';
     }
 
     getDone() {

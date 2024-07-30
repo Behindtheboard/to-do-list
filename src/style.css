@@ -233,7 +233,7 @@ h1, h2 {
     height: 32px;
 }
 
-#task {
+.task-display {
     display: flex;
     justify-content: space-between;
     padding-top: 10px;
@@ -246,7 +246,7 @@ h1, h2 {
     width: 32px;
 }
 
-#task label {
+.task-display label {
     align-self: center;
     font-size: 1.5rem;
 }
