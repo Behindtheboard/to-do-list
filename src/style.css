@@ -246,7 +246,7 @@ h1, h2 {
     width: 32px;
 }
 
-.task-display label {
+.task-display label, .task-display div {
     align-self: center;
     font-size: 1.5rem;
 }

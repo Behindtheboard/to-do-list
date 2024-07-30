@@ -30,20 +30,20 @@ export default function newTaskModalHandler(obj) {
     prioritySelect.setAttribute('name', 'priority');
     prioritySelect.setAttribute('id', 'priority-input');
 
-    const optionNo = document.createElement('option');
-    optionNo.setAttribute('value', '0');
-    optionNo.textContent = 'No';
+    // const optionNo = document.createElement('option');
+    // optionNo.setAttribute('value', '0');
+    // optionNo.textContent = 'No';
     const optionLow = document.createElement('option');
-    optionLow.setAttribute('value', '1');
+    optionLow.setAttribute('value', 'Low');
     optionLow.textContent = 'Low';
     const optionMid = document.createElement('option');
-    optionMid.setAttribute('value', '2');
+    optionMid.setAttribute('value', 'Mid');
     optionMid.textContent = 'Mid';
     const optionHigh = document.createElement('option');
-    optionHigh.setAttribute('value', '3');
+    optionHigh.setAttribute('value', 'High');
     optionHigh.textContent = 'High';
 
-    prioritySelect.appendChild(optionNo);
+    // prioritySelect.appendChild(optionNo);
     prioritySelect.appendChild(optionLow);
     prioritySelect.appendChild(optionMid);
     prioritySelect.appendChild(optionHigh);
@@ -89,6 +89,7 @@ export default function newTaskModalHandler(obj) {
             if (taskNameInput.value !== '') {
                 document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
                 const newTask = new Task(taskNameInput.value);
+                newTask.setPriority(prioritySelect.value);
                 list.newTask(newTask);
                 displayTask(list);
             }
