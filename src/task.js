@@ -3,6 +3,7 @@ export default class Task {
         this.name = name;
         this.done = false;
         this.priority = 'Low';
+        this.dueDate = '';
     }
 
     getDone() {
@@ -19,7 +20,14 @@ export default class Task {
         return this.priority;
     }
     setPriority(level) {
-        this.priority = level
+        this.priority = level;
+    }
+
+    getDueDate() {
+        return this.dueDate;
+    }
+    setDueDate(date) {
+        this.dueDate = date;
     }
 
 

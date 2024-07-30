@@ -88,8 +88,11 @@ export default function newTaskModalHandler(obj) {
         document.querySelector('#add-task-button').addEventListener('click', () => {
             if (taskNameInput.value !== '') {
                 document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
+                
                 const newTask = new Task(taskNameInput.value);
                 newTask.setPriority(prioritySelect.value);
+                newTask.setDueDate(dueDateInput.value);
+
                 list.newTask(newTask);
                 displayTask(list);
             }

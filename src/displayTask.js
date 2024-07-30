@@ -21,6 +21,11 @@ export default function displayTask(list) {
         taskPriorityDisplay.setAttribute('id', 'task-priority-display');
         taskPriorityDisplay.textContent = obj.getPriority();
         taskDisplay.appendChild(taskPriorityDisplay);
+        
+        const taskDueDateDisplay = document.createElement('div');
+        taskDueDateDisplay.setAttribute('id', 'task-due-date-display');
+        taskDueDateDisplay.textContent = obj.getDueDate();
+        taskDisplay.appendChild(taskDueDateDisplay);
 
         const infoButton = document.createElement('button');
         infoButton.setAttribute('id', `${obj.name.replace(/\s+/g, '')}-info-button`);
