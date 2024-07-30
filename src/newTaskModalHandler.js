@@ -1,7 +1,7 @@
 import Task from './task.js';
 import displayTask from './displayTask.js';
 
-export default function newTaskModalHandler(obj) {
+export default function newTaskModalHandler() {
     const newTaskDialog = document.createElement('dialog');
     newTaskDialog.setAttribute('id', 'new-task-dialog');
     document.querySelector('#container').appendChild(newTaskDialog);
@@ -84,18 +84,20 @@ export default function newTaskModalHandler(obj) {
         newTaskDialog.showModal();
     });
 
-    // obj.library.forEach((list) =>{
-        document.querySelector('#add-task-button').addEventListener('click', () => {
-            if (taskNameInput.value !== '') {
-                document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
+    document.querySelector('#nvm-button').addEventListener('click', () => {
+        newTaskDialog.close();
+    });
 
-                const newTask = new Task(taskNameInput.value);
-                newTask.setPriority(prioritySelect.value);
-                newTask.setDueDate(dueDateInput.value);
+    document.querySelector('#add-task-button').addEventListener('click', () => {
+        if (taskNameInput.value !== '') {
+            document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
 
-                list.newTask(newTask);
-                displayTask(list);
-            }
-        });
-    // });
+            const newTask = new Task(taskNameInput.value);
+            newTask.setPriority(prioritySelect.value);
+            newTask.setDueDate(dueDateInput.value);
+
+            list.newTask(newTask);
+            displayTask(list);
+        }
+    });
 }
