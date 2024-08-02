@@ -12,10 +12,10 @@ export default function displayTask(list) {
         taskCheckbox.setAttribute('value', 'true')
         taskDisplay.appendChild(taskCheckbox);
         
-        const taskInput = document.createElement('input');
-        taskInput.setAttribute('id', `${task.name.replace(/\s+/g, '')}`)
-        taskInput.value = task.name;
-        taskDisplay.appendChild(taskInput);
+        const taskName = document.createElement('div');
+        taskName.setAttribute('id', `${task.name.replace(/\s+/g, '')}`)
+        taskName.textContent = task.name;
+        taskDisplay.appendChild(taskName);
 
         const taskPriorityDisplay = document.createElement('div');
         taskPriorityDisplay.setAttribute('id', `${task.name.replace(/\s+/g, '')}-priority-display`);
