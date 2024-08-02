@@ -6,6 +6,14 @@ export default class Task {
         this.dueDate = '';
     }
 
+    getName() {
+        return this.name;
+    }
+
+    setName(newName) {
+        this.name = newName;
+    }
+
     getDone() {
         return this.done;
     }

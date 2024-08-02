@@ -12,18 +12,18 @@ export default function displayTask(list) {
         taskCheckbox.setAttribute('value', 'true')
         taskDisplay.appendChild(taskCheckbox);
         
-        const taskLabel = document.createElement('label');
-        taskLabel.setAttribute('for', 'task')
-        taskLabel.textContent = task.name;
-        taskDisplay.appendChild(taskLabel);
+        const taskInput = document.createElement('input');
+        taskInput.setAttribute('id', `${task.name.replace(/\s+/g, '')}`)
+        taskInput.value = task.name;
+        taskDisplay.appendChild(taskInput);
 
         const taskPriorityDisplay = document.createElement('div');
-        taskPriorityDisplay.setAttribute('id', 'task-priority-display');
+        taskPriorityDisplay.setAttribute('id', `${task.name.replace(/\s+/g, '')}-priority-display`);
         taskPriorityDisplay.textContent = task.getPriority();
         taskDisplay.appendChild(taskPriorityDisplay);
         
         const taskDueDateDisplay = document.createElement('div');
-        taskDueDateDisplay.setAttribute('id', 'task-due-date-display');
+        taskDueDateDisplay.setAttribute('id', `${task.name.replace(/\s+/g, '')}-due-date-display`);
         taskDueDateDisplay.textContent = task.getDueDate();
         taskDisplay.appendChild(taskDueDateDisplay);
 

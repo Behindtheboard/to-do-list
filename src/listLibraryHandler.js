@@ -7,7 +7,7 @@ export default function listLibraryHandler(obj) {
         document.querySelector(`#${list.name.replace(/\s+/g, '')}-list-button`).addEventListener('click', () => {
             displayList(list);
             displayTask(list);
-            newTaskModalHandler(obj);
+            newTaskModalHandler();
         });
     });
 }

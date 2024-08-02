@@ -6,9 +6,9 @@ import displayTask from './displayTask.js';
 import listLibrary from './listLibrary.js';
 import displayListLibrary from './displayListLibrary.js';
 import listLibraryHandler from './listLibraryHandler.js';
-import newTaskModalHandler from './newTaskModalHandler.js';
 import newListHandler from './newListHandler.js';
-import taskHandler from './taskHandler.js';
+import newTaskModalHandler from './newTaskModalHandler.js';
+import updateTaskHandlers from './updateTaskHandlers.js';
 
 const toDoLists = listLibrary();
 
@@ -23,4 +23,4 @@ displayListLibrary(toDoLists);
 listLibraryHandler(toDoLists);
 newListHandler(toDoLists);
 newTaskModalHandler(toDoLists);
-taskHandler(toDoLists);
+updateTaskHandlers(toDoLists);

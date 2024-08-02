@@ -1,15 +1,14 @@
-import displayTask from './displayTask.js';
-import Task from './task.js';
-import updateTaskHandlers from './updateTaskHandlers.js';
+import displayTask from "./displayTask";
 
-export default function newTaskModalHandler(obj) {
-    const newTaskDialog = document.createElement('dialog');
-    newTaskDialog.setAttribute('id', 'new-task-dialog');
-    document.querySelector('#container').appendChild(newTaskDialog);
-    const newTaskForm = document.createElement('form');
-    newTaskForm.setAttribute('method', 'dialog');
-    newTaskForm.setAttribute('id', 'new-task-form');
-    newTaskDialog.appendChild(newTaskForm);
+export default function updateTaskHandlers(obj) {
+    
+    const updateTaskPriorityDialog = document.createElement('dialog');
+    updateTaskPriorityDialog.setAttribute('id', 'update-task-priority-dialog');
+    document.querySelector('#container').appendChild(updateTaskPriorityDialog);
+    const updateTaskPriorityForm = document.createElement('form');
+    updateTaskPriorityForm.setAttribute('method', 'dialog');
+    updateTaskPriorityForm.setAttribute('id', 'update-task-priority-form');
+    updateTaskPriorityDialog.appendChild(updateTaskPriorityForm);
 
     const taskNameDiv = document.createElement('div');
     const taskNameLabel = document.createElement('label');
@@ -62,41 +61,41 @@ export default function newTaskModalHandler(obj) {
     const buttonDiv = document.createElement('div');
     const addTaskButton = document.createElement('button');
     addTaskButton.setAttribute('type', 'submit');
-    addTaskButton.setAttribute('id', 'add-task-button');
-    addTaskButton.textContent = 'Add';
+    addTaskButton.setAttribute('id', 'update-task-button');
+    addTaskButton.textContent = 'Update';
 
     const nvmButton = document.createElement('button');
-    nvmButton.setAttribute('id', 'nvm-button');
+    nvmButton.setAttribute('id', 'update-nvm-button');
     nvmButton.textContent = 'Nvm';
 
     buttonDiv.appendChild(addTaskButton);
     buttonDiv.appendChild(nvmButton);
 
-    newTaskForm.appendChild(taskNameDiv);
-    newTaskForm.appendChild(priorityDiv);
-    newTaskForm.appendChild(dateDiv);
-    newTaskForm.appendChild(buttonDiv);
+    updateTaskPriorityForm.appendChild(taskNameDiv);
+    updateTaskPriorityForm.appendChild(priorityDiv);
+    updateTaskPriorityForm.appendChild(dateDiv);
+    updateTaskPriorityForm.appendChild(buttonDiv);
 
-    document.querySelector('#new-task-button').addEventListener('click', () => {
-        newTaskDialog.showModal();
-    });
-
-    document.querySelector('#nvm-button').addEventListener('click', () => {
-        newTaskDialog.close();
+    document.querySelector('#update-nvm-button').addEventListener('click', () => {
+        updateTaskPriorityDialog.close();
     });
 
     obj.library.forEach((list) =>{
-        document.querySelector('#add-task-button').addEventListener('click', () => {
-            if (taskNameInput.value !== '') {
+        list.taskList.forEach((task) => {
+            document.querySelector(`#${task.name.replace(/\s+/g, '')}-info-button`).addEventListener('click', () => {
+                updateTaskPriorityDialog.showModal();
+            });
+
+            document.querySelector('#update-task-button').addEventListener('click', () => {
+                task.setName(taskNameInput.value);
+                task.setPriority(prioritySelect.value);
+                task.setDueDate(dueDateInput.value);
                 document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
-
-                const newTask = new Task(taskNameInput.value);
-                newTask.setPriority(prioritySelect.value);
-                newTask.setDueDate(dueDateInput.value);
-
-                list.newTask(newTask);
+                console.log(`${task.name}`);
                 displayTask(list);
-            }
+                updateTaskHandlers(obj);
+            });
+
         });
     });
 }
