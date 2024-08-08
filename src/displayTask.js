@@ -14,7 +14,7 @@ export default function displayTask(list) {
         
         const taskName = document.createElement('div');
         taskName.setAttribute('id', `${task.name.replace(/\s+/g, '')}`)
-        taskName.textContent = task.name;
+        taskName.textContent = task.getName();
         taskDisplay.appendChild(taskName);
 
         const taskPriorityDisplay = document.createElement('div');

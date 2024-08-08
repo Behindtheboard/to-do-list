@@ -1,6 +1,6 @@
 import displayTask from './displayTask.js';
 import Task from './task.js';
-import updateTaskHandlers from './updateTaskHandlers.js';
+import infoButtonHandler from './infoButtonHandler.js';
 
 export default function newTaskModalHandler(obj) {
     const newTaskDialog = document.createElement('dialog');
@@ -96,6 +96,9 @@ export default function newTaskModalHandler(obj) {
 
                 list.newTask(newTask);
                 displayTask(list);
+                list.taskList.forEach((task) => {          
+                    document.querySelector(`#${task.name.replace(/\s+/g, '')}-info-button`).removeEventListener('click', infoButtonHandler(obj));
+                });
             }
         });
     });

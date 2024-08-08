@@ -1,7 +1,4 @@
-import displayTask from "./displayTask";
-
-export default function updateTaskHandlers(obj) {
-    
+export default function updateTaskDialog() {
     const updateTaskPriorityDialog = document.createElement('dialog');
     updateTaskPriorityDialog.setAttribute('id', 'update-task-priority-dialog');
     document.querySelector('#container').appendChild(updateTaskPriorityDialog);
@@ -12,11 +9,11 @@ export default function updateTaskHandlers(obj) {
 
     const taskNameDiv = document.createElement('div');
     const taskNameLabel = document.createElement('label');
-    taskNameLabel.setAttribute('for', 'task-name-input');
+    taskNameLabel.setAttribute('for', 'update-task-name-input');
     taskNameLabel.textContent = 'Task Name';
     const taskNameInput = document.createElement('input');
     taskNameInput.setAttribute('type', 'text');
-    taskNameInput.setAttribute('id', 'task-name-input');
+    taskNameInput.setAttribute('id', 'update-task-name-input');
     taskNameInput.setAttribute('name', 'task-name-input');
     taskNameInput.required = true;
     taskNameDiv.appendChild(taskNameLabel);
@@ -24,11 +21,11 @@ export default function updateTaskHandlers(obj) {
 
     const priorityDiv = document.createElement('div');
     const priorityLabel = document.createElement('label');
-    priorityLabel.setAttribute('for', 'priority-input');
+    priorityLabel.setAttribute('for', 'update-priority-input');
     priorityLabel.textContent = 'Priority';
     const prioritySelect = document.createElement('select');
     prioritySelect.setAttribute('name', 'priority');
-    prioritySelect.setAttribute('id', 'priority-input');
+    prioritySelect.setAttribute('id', 'update-priority-input');
 
     const optionLow = document.createElement('option');
     optionLow.setAttribute('value', 'Low');
@@ -49,11 +46,11 @@ export default function updateTaskHandlers(obj) {
 
     const dateDiv = document.createElement('div');
     const dueDateLabel = document.createElement('label');
-    dueDateLabel.setAttribute('for', 'due-date-input');
+    dueDateLabel.setAttribute('for', 'update-due-date-input');
     dueDateLabel.textContent = 'Due Date:';
     const dueDateInput = document.createElement('input');
     dueDateInput.setAttribute('type', 'date');
-    dueDateInput.setAttribute('id', 'due-date-input');
+    dueDateInput.setAttribute('id', 'update-due-date-input');
 
     dateDiv.appendChild(dueDateLabel);
     dateDiv.appendChild(dueDateInput);
@@ -75,27 +72,4 @@ export default function updateTaskHandlers(obj) {
     updateTaskPriorityForm.appendChild(priorityDiv);
     updateTaskPriorityForm.appendChild(dateDiv);
     updateTaskPriorityForm.appendChild(buttonDiv);
-
-    document.querySelector('#update-nvm-button').addEventListener('click', () => {
-        updateTaskPriorityDialog.close();
-    });
-
-    obj.library.forEach((list) =>{
-        list.taskList.forEach((task) => {
-            document.querySelector(`#${task.name.replace(/\s+/g, '')}-info-button`).addEventListener('click', () => {
-                updateTaskPriorityDialog.showModal();
-            });
-
-            document.querySelector('#update-task-button').addEventListener('click', () => {
-                task.setName(taskNameInput.value);
-                task.setPriority(prioritySelect.value);
-                task.setDueDate(dueDateInput.value);
-                document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
-                console.log(`${task.name}`);
-                displayTask(list);
-                updateTaskHandlers(obj);
-            });
-
-        });
-    });
 }

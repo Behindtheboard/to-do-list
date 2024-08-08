@@ -8,12 +8,17 @@ import displayListLibrary from './displayListLibrary.js';
 import listLibraryHandler from './listLibraryHandler.js';
 import newListHandler from './newListHandler.js';
 import newTaskModalHandler from './newTaskModalHandler.js';
-import updateTaskHandlers from './updateTaskHandlers.js';
+import updateTaskDialogHandler from './updateTaskDialogHandler.js';
+import updateTaskDialog from './updateTaskDialog.js'
+import currentDate from './currentDate.js';
+import infoButtonHandler from './infoButtonHandler.js';
 
 const toDoLists = listLibrary();
+const date = new Date();
 
 const defaultList = list('Default');
 const newTask = new Task('New Task')
+newTask.setDueDate(currentDate());
 defaultList.newTask(newTask);
 displayList(defaultList);
 displayTask(defaultList);
@@ -23,4 +28,6 @@ displayListLibrary(toDoLists);
 listLibraryHandler(toDoLists);
 newListHandler(toDoLists);
 newTaskModalHandler(toDoLists);
-updateTaskHandlers(toDoLists);
+updateTaskDialog();
+updateTaskDialogHandler(toDoLists);
+infoButtonHandler(toDoLists);
