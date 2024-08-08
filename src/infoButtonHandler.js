@@ -7,7 +7,8 @@ export default function infoButtonHandler(obj) {
     const showModal = function(event) {
         obj.library.forEach((list) =>{
             list.taskList.forEach((task) => {   
-                if (event.target.id = `#${task.name.replace(/\s+/g, '')}-info-button`) {
+                console.log(event.target.id);
+                if (event.target.id === `${task.name.replace(/\s+/g, '')}-info-button`) {
                     updateTaskPriorityDialog.showModal();
             
                     taskNameInput.value = task.getName();
@@ -18,12 +19,15 @@ export default function infoButtonHandler(obj) {
         });
     }
          
-    document.querySelector("button[id$='-info-button']").addEventListener('click', showModal);   
+    document.querySelector("button[id$='-info-button']").addEventListener('click', showModal);
 
     obj.library.forEach((list) =>{
         list.taskList.forEach((task) => {          
             document.querySelector('#update-task-button').addEventListener('click', () => {
-                document.querySelector(`#${task.name.replace(/\s+/g, '')}-info-button`).removeEventListener('click', showModal);
+                // document.querySelector(`#${task.name.replace(/\s+/g, '')}-info-button`).removeEventListener('click', showModal);
+            });
+            document.querySelector('#add-task-button').addEventListener('click', () => {
+                // document.querySelector(`#${task.name.replace(/\s+/g, '')}-info-button`).removeEventListener('click', showModal);
             });
         });
     });

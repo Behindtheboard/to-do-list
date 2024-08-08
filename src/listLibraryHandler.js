@@ -1,6 +1,6 @@
 import displayList from "./displayList";
 import displayTask from "./displayTask";
-import newTaskModalHandler from "./newTaskModalHandler";
+import newTaskModalHandler from "./newTaskDialogHandler";
 
 export default function listLibraryHandler(obj) {
     obj.library.forEach((list) =>{

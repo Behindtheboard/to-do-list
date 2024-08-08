@@ -1,8 +1,4 @@
-import displayTask from './displayTask.js';
-import Task from './task.js';
-import infoButtonHandler from './infoButtonHandler.js';
-
-export default function newTaskModalHandler(obj) {
+export default function newTaskDialog() {
     const newTaskDialog = document.createElement('dialog');
     newTaskDialog.setAttribute('id', 'new-task-dialog');
     document.querySelector('#container').appendChild(newTaskDialog);
@@ -77,29 +73,4 @@ export default function newTaskModalHandler(obj) {
     newTaskForm.appendChild(dateDiv);
     newTaskForm.appendChild(buttonDiv);
 
-    document.querySelector('#new-task-button').addEventListener('click', () => {
-        newTaskDialog.showModal();
-    });
-
-    document.querySelector('#nvm-button').addEventListener('click', () => {
-        newTaskDialog.close();
-    });
-
-    obj.library.forEach((list) =>{
-        document.querySelector('#add-task-button').addEventListener('click', () => {
-            if (taskNameInput.value !== '') {
-                document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
-
-                const newTask = new Task(taskNameInput.value);
-                newTask.setPriority(prioritySelect.value);
-                newTask.setDueDate(dueDateInput.value);
-
-                list.newTask(newTask);
-                displayTask(list);
-                list.taskList.forEach((task) => {          
-                    document.querySelector(`#${task.name.replace(/\s+/g, '')}-info-button`).removeEventListener('click', infoButtonHandler(obj));
-                });
-            }
-        });
-    });
 }

@@ -1,5 +1,5 @@
 import displayTask from "./displayTask";
-import infoButtonHandler from "./infoButtonHandler";
+import infoButtonHandler from './infoButtonHandler.js';
 
 export default function updateTaskDialogHandler(obj) {
     const updateTaskPriorityDialog = document.querySelector('#update-task-priority-dialog');
@@ -25,6 +25,7 @@ export default function updateTaskDialogHandler(obj) {
                 }
                 document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
                 displayTask(list);
+                infoButtonHandler(obj);
             });
         });
     });
