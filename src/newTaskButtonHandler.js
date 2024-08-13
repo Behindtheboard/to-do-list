@@ -1,4 +1,4 @@
-export default function newTaskButtonHandler(obj) {
+export default function newTaskButtonHandler() {
     const newTaskDialog = document.querySelector('#new-task-dialog');
     const taskNameInput = document.querySelector('#task-name-input');
     const prioritySelect = document.querySelector('#priority-input');
@@ -8,5 +8,5 @@ export default function newTaskButtonHandler(obj) {
         newTaskDialog.showModal()
     });
 
-    
+
 }

@@ -31,7 +31,7 @@ listLibraryHandler(toDoLists);
 newListHandler(toDoLists);
 newTaskDialog();
 updateTaskDialog();
+infoButtonHandler(toDoLists);
 newTaskButtonHandler(toDoLists)
-updateTaskDialogHandler(toDoLists);
 newTaskDialogHandler(toDoLists);
-// infoButtonHandler(toDoLists);
+updateTaskDialogHandler(toDoLists);

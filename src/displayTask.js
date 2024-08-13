@@ -28,6 +28,7 @@ export default function displayTask(list) {
         taskDisplay.appendChild(taskDueDateDisplay);
 
         const infoButton = document.createElement('button');
+        infoButton.classList.add('info-button');
         infoButton.setAttribute('id', `${task.name.replace(/\s+/g, '')}-info-button`);
         infoButton.textContent = 'i'
         taskDisplay.appendChild(infoButton);
