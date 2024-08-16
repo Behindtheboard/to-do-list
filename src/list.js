@@ -1,9 +1,14 @@
 export default function list(name) {
-    const taskList = [];
+    let taskList = [];
     
     const newTask = function(task) {
         taskList.push(task);
     }
 
-    return {name, taskList, newTask};
+    const deleteTask = function(task) {
+        const index = taskList.findIndex(item => item.name != task.name)
+        taskList.splice(index, 1);
+    }
+
+    return {name, taskList, newTask, deleteTask};
 }

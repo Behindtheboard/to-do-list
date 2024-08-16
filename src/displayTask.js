@@ -32,5 +32,11 @@ export default function displayTask(list) {
         infoButton.setAttribute('id', `${task.name.replace(/\s+/g, '')}-info-button`);
         infoButton.textContent = 'i'
         taskDisplay.appendChild(infoButton);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.setAttribute('id', `${task.name.replace(/\s+/g, '')}-delete-button`)
+        deleteButton.textContent = 'Delete';
+        taskDisplay.appendChild(deleteButton);
     });
 }

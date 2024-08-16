@@ -10,9 +10,9 @@ import newListHandler from './newListHandler.js';
 import newTaskDialog from './newTaskDialog.js';
 import newTaskDialogHandler from './newTaskDialogHandler.js';
 import newTaskButtonHandler from './newTaskButtonHandler.js';
-import updateTaskDialogHandler from './updateTaskDialogHandler.js';
 import updateTaskDialog from './updateTaskDialog.js'
 import infoButtonHandler from './infoButtonHandler.js';
+import deleteButtonHandler from './deleteButtonHandler.js';
 import currentDate from './currentDate.js';
 
 const toDoLists = listLibrary();
@@ -32,6 +32,6 @@ newListHandler(toDoLists);
 newTaskDialog();
 updateTaskDialog();
 infoButtonHandler(toDoLists);
-newTaskButtonHandler(toDoLists)
+newTaskButtonHandler(toDoLists);
 newTaskDialogHandler(toDoLists);
-updateTaskDialogHandler(toDoLists);
+deleteButtonHandler(toDoLists);

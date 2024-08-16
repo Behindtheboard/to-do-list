@@ -1,7 +1,6 @@
 import displayTask from './displayTask.js';
 import Task from './task.js';
 import infoButtonHandler from './infoButtonHandler.js';
-import updateTaskDialogHandler from './updateTaskDialogHandler.js'
 
 
 export default function newTaskDialogHandler(obj) {
@@ -25,7 +24,6 @@ export default function newTaskDialogHandler(obj) {
                 list.newTask(newTask);
                 document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
 
-                console.log(list.taskList);
                 displayTask(list);
                 infoButtonHandler(obj);
             }
