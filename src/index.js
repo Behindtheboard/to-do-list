@@ -26,11 +26,11 @@ displayList(defaultList);
 displayTask(defaultList);
 toDoLists.addList(defaultList);
 
+newTaskDialog();
+
 displayListLibrary(toDoLists);
 listLibraryHandler(toDoLists);
 newListHandler(toDoLists);
-newTaskDialog();
-updateTaskDialog();
 infoButtonHandler(toDoLists);
 newTaskButtonHandler(toDoLists);
 newTaskDialogHandler(toDoLists);

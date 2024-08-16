@@ -1,7 +1,8 @@
-import displayTask from './displayTask.js';
 import Task from './task.js';
+import displayTask from './displayTask.js';
 import infoButtonHandler from './infoButtonHandler.js';
-
+import deleteButtonHandler from './deleteButtonHandler.js';
+import transformName from "./transformName";
 
 export default function newTaskDialogHandler(obj) {
     const newTaskDialog = document.querySelector('#new-task-dialog');
@@ -15,17 +16,18 @@ export default function newTaskDialogHandler(obj) {
 
     obj.library.forEach((list) =>{
         document.querySelector('#add-task-button').addEventListener('click', () => {
+            const processedListName = transformName(list);
+            
             if (taskNameInput.value !== '') {
-                
                 const newTask = new Task(taskNameInput.value);
                 newTask.setPriority(prioritySelect.value);
                 newTask.setDueDate(dueDateInput.value);
                 
                 list.newTask(newTask);
-                document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
-
+                document.querySelector(`#${processedListName}-task-display`).innerHTML = '';
                 displayTask(list);
                 infoButtonHandler(obj);
+                deleteButtonHandler(obj);
             }
         });
     });

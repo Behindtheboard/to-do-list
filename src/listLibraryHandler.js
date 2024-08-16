@@ -3,10 +3,12 @@ import displayTask from "./displayTask.js";
 import newTaskButtonHandler from "./newTaskButtonHandler.js";
 import newTaskDialogHandler from "./newTaskDialogHandler.js";
 import newTaskDialog from "./newTaskDialog.js";
+import transformName from "./transformName";
 
 export default function listLibraryHandler(obj) {
     obj.library.forEach((list) =>{
-        document.querySelector(`#${list.name.replace(/\s+/g, '')}-list-button`).addEventListener('click', () => {
+        const processedListName = transformName(list);
+        document.querySelector(`#${processedListName}-list-button`).addEventListener('click', () => {
             displayList(list);
             displayTask(list);
             newTaskDialog();

@@ -1,6 +1,6 @@
-export default function updateTaskDialog() {
+export default function updateTaskDialog(processedTaskName) {
     const updateTaskPriorityDialog = document.createElement('dialog');
-    updateTaskPriorityDialog.setAttribute('id', 'update-task-priority-dialog');
+    updateTaskPriorityDialog.setAttribute('id', `${processedTaskName}-update-task-priority-dialog`);
     document.querySelector('#container').appendChild(updateTaskPriorityDialog);
     const updateTaskPriorityForm = document.createElement('form');
     updateTaskPriorityForm.setAttribute('method', 'dialog');
@@ -9,11 +9,11 @@ export default function updateTaskDialog() {
 
     const taskNameDiv = document.createElement('div');
     const taskNameLabel = document.createElement('label');
-    taskNameLabel.setAttribute('for', 'update-task-name-input');
+    taskNameLabel.setAttribute('for', `${processedTaskName}-update-task-name-input`);
     taskNameLabel.textContent = 'Task Name';
     const taskNameInput = document.createElement('input');
     taskNameInput.setAttribute('type', 'text');
-    taskNameInput.setAttribute('id', 'update-task-name-input');
+    taskNameInput.setAttribute('id', `${processedTaskName}-update-task-name-input`);
     taskNameInput.setAttribute('name', 'task-name-input');
     taskNameInput.required = true;
     taskNameDiv.appendChild(taskNameLabel);
@@ -21,11 +21,11 @@ export default function updateTaskDialog() {
 
     const priorityDiv = document.createElement('div');
     const priorityLabel = document.createElement('label');
-    priorityLabel.setAttribute('for', 'update-priority-input');
+    priorityLabel.setAttribute('for', `${processedTaskName}-update-priority-input`);
     priorityLabel.textContent = 'Priority';
     const prioritySelect = document.createElement('select');
     prioritySelect.setAttribute('name', 'priority');
-    prioritySelect.setAttribute('id', 'update-priority-input');
+    prioritySelect.setAttribute('id', `${processedTaskName}-update-priority-input`);
 
     const optionLow = document.createElement('option');
     optionLow.setAttribute('value', 'Low');
@@ -46,11 +46,11 @@ export default function updateTaskDialog() {
 
     const dateDiv = document.createElement('div');
     const dueDateLabel = document.createElement('label');
-    dueDateLabel.setAttribute('for', 'update-due-date-input');
+    dueDateLabel.setAttribute('for', `${processedTaskName}-update-due-date-input`);
     dueDateLabel.textContent = 'Due Date:';
     const dueDateInput = document.createElement('input');
     dueDateInput.setAttribute('type', 'date');
-    dueDateInput.setAttribute('id', 'update-due-date-input');
+    dueDateInput.setAttribute('id', `${processedTaskName}-update-due-date-input`);
 
     dateDiv.appendChild(dueDateLabel);
     dateDiv.appendChild(dueDateInput);
@@ -58,7 +58,7 @@ export default function updateTaskDialog() {
     const buttonDiv = document.createElement('div');
     const addTaskButton = document.createElement('button');
     addTaskButton.setAttribute('type', 'submit');
-    addTaskButton.setAttribute('id', 'update-task-button');
+    addTaskButton.setAttribute('id', `${processedTaskName}-update-task-button`);
     addTaskButton.textContent = 'Update';
 
     const nvmButton = document.createElement('button');

@@ -1,17 +1,19 @@
 import displayTask from "./displayTask";
 import infoButtonHandler from "./infoButtonHandler";
+import transformName from "./transformName";
 
 export default function deleteButtonHandler(obj) {
     obj.library.forEach((list) =>{
         list.taskList.forEach((task) => { 
-            document.querySelector(`#${task.name.replace(/\s+/g, '')}-delete-button`).addEventListener('click', () => {
-                console.log(task)
-                console.log(list.taskList)
+            const processedListName = transformName(list);
+            const processedTaskName = transformName(task);
+
+            document.querySelector(`#${processedTaskName}-delete-button`).addEventListener('click', () => {
                 list.deleteTask(task);
-                document.querySelector(`#${list.name.replace(/\s+/g, '')}-task-display`).innerHTML = '';
+                document.querySelector(`#${processedListName}-task-display`).innerHTML = '';
                 displayTask(list);
                 infoButtonHandler(obj);
-                console.log(task);
+                deleteButtonHandler(obj);
             });
         });
     });   

@@ -1,28 +1,28 @@
-import currentTask from "./currentTask.js";
+import updateTaskDialog from "./updateTaskDialog.js";
 import updateTaskDialogHandler from "./updateTaskDialogHandler.js";
+import transformName from "./transformName.js";
 
 export default function infoButtonHandler(obj) {
-    const updateTaskPriorityDialog = document.querySelector('#update-task-priority-dialog');
-    const taskNameInput = document.querySelector('#update-task-name-input');
-    const prioritySelect = document.querySelector('#update-priority-input');
-    const dueDateInput = document.querySelector('#update-due-date-input');
-
-    const currentTaskInfo = currentTask();
-
+    
     obj.library.forEach((list) =>{
         list.taskList.forEach((task) => { 
-            document.querySelector(`#${task.name.replace(/\s+/g, '')}-info-button`).addEventListener('click', () => {
-                
-                // currentTaskInfo.setCurrentTask(task);
+            const processedTaskName = transformName(task);
 
+            updateTaskDialog(processedTaskName)
+
+            const updateTaskPriorityDialog = document.querySelector(`#${processedTaskName}-update-task-priority-dialog`);
+            const taskNameInput = document.querySelector(`#${processedTaskName}-update-task-name-input`);
+            const prioritySelect = document.querySelector(`#${processedTaskName}-update-priority-input`);
+            const dueDateInput = document.querySelector(`#${processedTaskName}-update-due-date-input`);
+
+            document.querySelector(`#${processedTaskName}-info-button`).addEventListener('click', () => {
                 updateTaskPriorityDialog.showModal();
                     
                 taskNameInput.value = task.getName();
                 prioritySelect.value = task.getPriority();
                 dueDateInput.value = task.getDueDate();
 
-                updateTaskDialogHandler(obj, list, task);
-                // currentTaskInfo.getCurrentTask()
+                updateTaskDialogHandler(obj, list, processedTaskName, task);
             });
         });
     });   
