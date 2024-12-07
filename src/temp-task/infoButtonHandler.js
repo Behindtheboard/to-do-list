@@ -1,6 +1,6 @@
 import updateTaskDialog from "./updateTaskDialog.js";
 import updateTaskDialogHandler from "./updateTaskDialogHandler.js";
-import transformName from "./transformName.js";
+import transformName from "../transformName.js";
 
 export default function infoButtonHandler(obj) {
     

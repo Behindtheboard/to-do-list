@@ -1,4 +1,4 @@
-import list from "./list.js";
+import list from "../temp-list/list.js";
 import displayListLibrary from "./displayListLibrary.js";
 import listLibraryHandler from "./listLibraryHandler.js";
 

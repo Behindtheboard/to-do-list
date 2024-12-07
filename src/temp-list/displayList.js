@@ -1,4 +1,4 @@
-import transformName from "./transformName";
+import transformName from "../transformName";
 
 export default function displayList(list) {
     const processedListName = transformName(list);

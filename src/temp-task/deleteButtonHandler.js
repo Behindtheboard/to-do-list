@@ -1,6 +1,6 @@
 import displayTask from "./displayTask";
 import infoButtonHandler from "./infoButtonHandler";
-import transformName from "./transformName";
+import transformName from "../transformName";
 
 export default function deleteButtonHandler(obj) {
     obj.library.forEach((list) =>{

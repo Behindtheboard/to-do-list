@@ -1,18 +1,18 @@
 import './style.css'
-import list from './list.js';
+import list from './temp-list/list.js';
 import Task from './task.js';
-import displayList from './displayList.js';
+import displayList from './temp-list/displayList.js';
 import displayTask from './displayTask.js';
 import listLibrary from './listLibrary.js';
 import displayListLibrary from './displayListLibrary.js';
 import listLibraryHandler from './listLibraryHandler.js';
-import newListHandler from './newListHandler.js';
+import newListHandler from './temp-listLibrary/newListHandler.js';
 import newTaskDialog from './newTaskDialog.js';
 import newTaskDialogHandler from './newTaskDialogHandler.js';
 import newTaskButtonHandler from './newTaskButtonHandler.js';
 import updateTaskDialog from './updateTaskDialog.js'
-import infoButtonHandler from './infoButtonHandler.js';
-import deleteButtonHandler from './deleteButtonHandler.js';
+import infoButtonHandler from './temp-task/infoButtonHandler.js';
+import deleteButtonHandler from './temp-task/deleteButtonHandler.js';
 import currentDate from './currentDate.js';
 
 const toDoLists = listLibrary();
