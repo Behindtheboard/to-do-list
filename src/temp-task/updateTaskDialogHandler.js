@@ -1,7 +1,7 @@
 import displayTask from "./displayTask";
 import infoButtonHandler from './infoButtonHandler.js';
 import deleteButtonHandler from './deleteButtonHandler.js';
-import transformName from "./transformName.js";
+import transformName from "../transformName.js";
 
 export default function updateTaskDialogHandler(obj, list, processedTaskName, task) {
 

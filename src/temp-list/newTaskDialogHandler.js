@@ -1,8 +1,8 @@
-import Task from './task.js';
-import displayTask from './displayTask.js';
-import infoButtonHandler from './infoButtonHandler.js';
-import deleteButtonHandler from './deleteButtonHandler.js';
-import transformName from "./transformName";
+import Task from '../temp-task/task.js';
+import displayTask from '../temp-task/displayTask.js';
+import infoButtonHandler from '../temp-task/infoButtonHandler.js';
+import deleteButtonHandler from '../temp-task/deleteButtonHandler.js';
+import transformName from "../transformName.js";
 
 export default function newTaskDialogHandler(obj) {
     const newTaskDialog = document.querySelector('#new-task-dialog');
