@@ -1,3 +1,8 @@
+import {list} from "../temp-list/list.js";
+import newListDialog from "./newListDialog.js";
+import {displayListPage} from "../temp-list/list.js";
+import displayTask from "../temp-task/displayTask.js";
+
 export function listLibrary() {
   const library = [];
 
@@ -11,17 +16,11 @@ export function listLibrary() {
   return { library, getLibrary, addList };
 }
 
-import { list } from "../temp-list/list.js";
-import newListDialog from "./newListDialog.js";
-import transformName from "../transformName";
-
 export function displayListLibrary(obj) {
   const listLibraryDisplay = document.getElementById("list-library-display");
 
   obj.library.forEach((list) => {
-    const processedListName = transformName(list);
     const listSidebar = document.createElement("button");
-    listSidebar.setAttribute("id", `${processedListName}-list-button`);
     listSidebar.classList.add("list-button");
     listSidebar.textContent = list.name;
     listLibraryDisplay.appendChild(listSidebar);
@@ -38,9 +37,9 @@ export function newListHandler(obj) {
     document
       .getElementById("add-list-button-dialog")
       .addEventListener("click", () => {
-        document.querySelector("#list-library-display").innerHTML = "";
+        document.getElementById("list-library-display").innerHTML = "";
 
-        const newList = list(nameInput.value);
+        const newList = list(document.getElementById('new-list-input').value);
         obj.addList(newList);
         displayListLibrary(obj);
         listLibraryHandler(obj);
@@ -53,20 +52,13 @@ export function newListHandler(obj) {
   });
 }
 
-// function newListDialogHandler(obj) {
-//   document
-//     .getElementById("add-list-button-dialog")
-//     .addEventListener("click", () => {
-//       document.querySelector("#list-library-display").innerHTML = "";
-
-//       const newList = list(nameInput.value);
-//       obj.addList(newList);
-//       displayListLibrary(obj);
-//       listLibraryHandler(obj);
-//     });
-
-//   document.querySelector("#nvm-button").addEventListener("click", (event) => {
-//     event.preventDefault();
-//     newListDialog.close();
-//   });
-// }
+export function listLibraryHandler(obj) {
+    const listButtons = document.querySelectorAll(".list-button");
+    listButtons.forEach((element, index) => {
+      element.addEventListener("click", () => {
+        displayListPage(obj.library[index]);
+        displayTask(obj.library[index]);
+      });
+    });
+  }
+  

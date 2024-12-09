@@ -18,7 +18,7 @@ export function list(name) {
 }
 
 
-export function displayListPage(obj, list) {
+export function displayListPage(list, obj) {
     const container = document.getElementById('container');
     container.innerHTML = '';
 
@@ -41,7 +41,6 @@ export function displayListPage(obj, list) {
     
     newTaskButtonHandler(obj)
 };
-
 
 function newTaskButtonHandler(obj) {    
     document.querySelector('#new-task-button').addEventListener('click', () => {
