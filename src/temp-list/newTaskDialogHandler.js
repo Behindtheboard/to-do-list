@@ -9,8 +9,8 @@ export default function newTaskDialogHandler(obj) {
     const prioritySelect = document.querySelector('#priority-input');
     const dueDateInput = document.querySelector('#due-date-input');
 
-    document.querySelector('#nvm-button').addEventListener('click', () => {
-        document.querySelector('dialog').innerHTML = '';
+    document.getElementById('nvm-button').addEventListener('click', (event) => {
+        event.preventDefault()
         newTaskDialog.close();
     });
 
@@ -23,7 +23,7 @@ export default function newTaskDialogHandler(obj) {
                 newTask.setDueDate(dueDateInput.value);
                 
                 list.newTask(newTask);
-                document.querySelector(`#tasks-container`).innerHTML = '';
+                document.getElementById(`tasks-container`).innerHTML = '';
                 displayTask(list);
                 infoButtonHandler(obj);
                 deleteButtonHandler(obj);

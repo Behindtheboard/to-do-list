@@ -19,8 +19,10 @@ const defaultList = list('Default');
 const newTask = new Task('New Task')
 newTask.setDueDate(currentDate());
 defaultList.newTask(newTask);
-displayListPage(defaultList);
+displayListPage(toDoLists, defaultList);
+
 displayTask(defaultList);
+
 toDoLists.addList(defaultList);
 
 displayListLibrary(toDoLists);
