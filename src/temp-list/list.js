@@ -1,3 +1,6 @@
+import newTaskDialog from "./newTaskDialog";
+import currentDate from '../currentDate.js';
+
 export function list(name) {
     let taskList = [];
     
@@ -13,7 +16,6 @@ export function list(name) {
     return {name, taskList, newTask, deleteTask};
 }
 
-import newTaskDialog from "./newTaskDialog";
 
 export function displayListPage(list) {
     const container = document.querySelector('#container')
@@ -28,7 +30,7 @@ export function displayListPage(list) {
     listPageDisplay.appendChild(listName);
 
     const tasksContainer = document.createElement('div')
-    tasksContainer.setAttribute('id', `$tasks-container`)
+    tasksContainer.setAttribute('id', `tasks-container`)
     listPageDisplay.appendChild(tasksContainer);
 
     const newTaskButton = document.createElement('button');
@@ -36,16 +38,15 @@ export function displayListPage(list) {
     newTaskButton.textContent = "New Task";
     listPageDisplay.appendChild(newTaskButton);
     
-    newTaskDialog()
     newTaskButtonHandler()
 };
 
 
 function newTaskButtonHandler() {
-    const newTaskDialog = document.querySelector('#new-task-dialog');
-
+    
     document.querySelector('#new-task-button').addEventListener('click', () => {
-        newTaskDialog.showModal()
+        newTaskDialog()
+        document.querySelector('#new-task-dialog').showModal()
     });
 
 }

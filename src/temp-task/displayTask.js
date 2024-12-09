@@ -5,7 +5,7 @@ export default function displayTask(list) {
         const processedListName = transformName(list);
         const processedTaskName = transformName(task);
         
-        const taskListDisplay = document.querySelector(`#${processedListName}-task-display`)
+        const taskListDisplay = document.querySelector(`#tasks-container`)
         
         const taskDisplay = document.createElement('div');
         taskDisplay.classList.add('task-display');

@@ -27,5 +27,4 @@ displayListLibrary(toDoLists);
 listLibraryHandler(toDoLists);
 newListHandler(toDoLists);
 infoButtonHandler(toDoLists);
-newTaskDialogHandler(toDoLists);
 deleteButtonHandler(toDoLists);

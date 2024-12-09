@@ -1,7 +1,7 @@
 export default function newTaskDialog() {
     const newTaskDialog = document.createElement('dialog');
     newTaskDialog.setAttribute('id', 'new-task-dialog');
-    document.querySelector('#container').appendChild(newTaskDialog);
+    document.querySelector('#dialog').appendChild(newTaskDialog);
     const newTaskForm = document.createElement('form');
     newTaskForm.setAttribute('method', 'dialog');
     newTaskForm.setAttribute('id', 'new-task-form');
