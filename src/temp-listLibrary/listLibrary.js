@@ -87,11 +87,18 @@ export function newListHandler(obj) {
 }
 
 export function listLibraryHandler(obj) {
-  const listButtons = document.querySelectorAll(".list-button");
-  listButtons.forEach((element, index) => {
-    element.addEventListener("click", () => {
-      displayListPage(obj.library[index]);
-      displayTask(obj.library[index]);
-    });
+  const listLibraryDisplay = document.getElementById("list-library-display");
+  const newlistLibraryDisplay = listLibraryDisplay.cloneNode(true);
+  listLibraryDisplay.parentNode.replaceChild(
+    newlistLibraryDisplay,
+    listLibraryDisplay
+  );
+
+  newlistLibraryDisplay.addEventListener("click", (e) => {
+    const clickedButton = e.target.closest(".list-button");
+    const listButtons = [...document.querySelectorAll(".list-button")]
+    const index = listButtons.indexOf(clickedButton);
+    displayListPage(obj.library[index]);
+    displayTask(obj.library[index]);
   });
 }
