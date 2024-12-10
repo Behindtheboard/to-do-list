@@ -1,7 +1,7 @@
-import {list} from "../temp-list/list.js";
-import newListDialog from "./newListDialog.js";
-import {displayListPage} from "../temp-list/list.js";
+import { list } from "../temp-list/list.js";
+import { displayListPage } from "../temp-list/list.js";
 import displayTask from "../temp-task/displayTask.js";
+import newListDialog from "./newListDialog.js";
 
 export function listLibrary() {
   const library = [];
@@ -33,32 +33,65 @@ export function newListHandler(obj) {
   document.getElementById("new-list-button").addEventListener("click", () => {
     document.getElementById("dialog").innerHTML = "";
     newListDialog();
-    document.getElementById("new-list-dialog").showModal();
-    document
-      .getElementById("add-list-button-dialog")
-      .addEventListener("click", () => {
-        document.getElementById("list-library-display").innerHTML = "";
 
-        const newList = list(document.getElementById('new-list-input').value);
+    const newListDialogEl = document.getElementById("new-list-dialog");
+    const newListInput = document.getElementById("new-list-input");
+    const newListForm = document.getElementById("new-list-form");
+
+    newListDialogEl.showModal();
+
+    newListInput.addEventListener("input", (e) => {
+      const trimmedInpute = newListInput.value.trim();
+      if (!trimmedInpute) {
+        newListInput.setCustomValidity("Need a name for new list!");
+        newListInput.reportValidity();
+        return;
+      } else if (
+        obj.library.map((el) => el.name).includes(newListInput.value)
+      ) {
+        newListInput.setCustomValidity("Already a list name");
+        newListInput.reportValidity();
+        return;
+      } else {
+        newListInput.setCustomValidity("");
+      }
+    });
+
+    newListForm.noValidate = true;
+
+    newListForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      if (newListInput.checkValidity()) {
+        const newList = list(newListInput.value);
         obj.addList(newList);
+
+        newListInput.value = "";
+        newListInput.setCustomValidity("");
+
+        document.getElementById("list-library-display").innerHTML = "";
         displayListLibrary(obj);
         listLibraryHandler(obj);
-      });
 
-    document.querySelector("#nvm-button").addEventListener("click", (event) => {
-      event.preventDefault();
-      document.getElementById("new-list-dialog").close();
+        newListDialogEl.close();
+      } else {
+        newListInput.reportValidity();
+      }
+    });
+
+    document.querySelector("#nvm-button").addEventListener("click", (e) => {
+      e.preventDefault();
+      newListDialogEl.close();
     });
   });
 }
 
 export function listLibraryHandler(obj) {
-    const listButtons = document.querySelectorAll(".list-button");
-    listButtons.forEach((element, index) => {
-      element.addEventListener("click", () => {
-        displayListPage(obj.library[index]);
-        displayTask(obj.library[index]);
-      });
+  const listButtons = document.querySelectorAll(".list-button");
+  listButtons.forEach((element, index) => {
+    element.addEventListener("click", () => {
+      displayListPage(obj.library[index]);
+      displayTask(obj.library[index]);
     });
-  }
-  
+  });
+}

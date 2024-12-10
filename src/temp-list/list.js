@@ -1,5 +1,4 @@
 import newTaskDialog from "./newTaskDialog";
-import currentDate from '../currentDate.js';
 import newTaskDialogHandler from "./newTaskDialogHandler.js";
 
 export function list(name) {
