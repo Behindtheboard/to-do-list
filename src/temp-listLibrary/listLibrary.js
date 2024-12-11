@@ -29,9 +29,10 @@ export function displayListLibrary(obj) {
   newListHandler(obj);
 }
 
-export function newListHandler(obj) {
+function newListHandler(obj) {
   document.getElementById("new-list-button").addEventListener("click", () => {
     document.getElementById("dialog").innerHTML = "";
+
     newListDialog();
 
     const newListDialogEl = document.getElementById("new-list-dialog");
@@ -41,15 +42,15 @@ export function newListHandler(obj) {
     newListDialogEl.showModal();
 
     newListInput.addEventListener("input", (e) => {
-      const trimmedInpute = newListInput.value.trim();
-      if (!trimmedInpute) {
-        newListInput.setCustomValidity("Need a name for new list!");
+      const trimmedInput = newListInput.value.trim();
+      if (!trimmedInput) {
+        newListInput.setCustomValidity("Need a name for new List!");
         newListInput.reportValidity();
         return;
       } else if (
         obj.library.map((el) => el.name).includes(newListInput.value)
       ) {
-        newListInput.setCustomValidity("Already a list name");
+        newListInput.setCustomValidity("Already a List name");
         newListInput.reportValidity();
         return;
       } else {
@@ -86,7 +87,7 @@ export function newListHandler(obj) {
   });
 }
 
-export function listLibraryHandler(obj) {
+function listLibraryHandler(obj) {
   const listLibraryDisplay = document.getElementById("list-library-display");
   const newlistLibraryDisplay = listLibraryDisplay.cloneNode(true);
   listLibraryDisplay.parentNode.replaceChild(
