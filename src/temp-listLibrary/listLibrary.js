@@ -10,15 +10,15 @@ export function listLibrary() {
     library.push(list);
   };
 
-  const getLibrary = function () {
-    return library;
-  };
-
   const deleteList = function (index) {
     library.splice(index, 1);
   };
 
-  return { library, getLibrary, addList, deleteList };
+  const renameList = function (index, listName) {
+    library[index].name = listName;
+  };
+
+  return { library, addList, deleteList, renameList };
 }
 
 export function displayListLibrary(obj) {
@@ -63,22 +63,7 @@ function newListHandler(obj) {
 
     newListDialogEl.showModal();
 
-    newListInput.addEventListener("input", (e) => {
-      const trimmedInput = newListInput.value.trim();
-      if (!trimmedInput) {
-        newListInput.setCustomValidity("Need a name for new List!");
-        newListInput.reportValidity();
-        return;
-      } else if (
-        obj.library.map((el) => el.name).includes(newListInput.value)
-      ) {
-        newListInput.setCustomValidity("Already a List name");
-        newListInput.reportValidity();
-        return;
-      } else {
-        newListInput.setCustomValidity("");
-      }
-    });
+    listNameValidation(obj);
 
     newListForm.noValidate = true;
 
@@ -139,8 +124,39 @@ function updateListHandler(obj) {
       newListDialog();
 
       const newListDialogEl = document.getElementById("new-list-dialog");
+      const newListForm = document.getElementById("new-list-form");
+      const newListInput = document.getElementById("new-list-input");
+
+      document.getElementById("list-name-input").textContent =
+        "Update List Name";
 
       newListDialogEl.showModal();
+
+      listNameValidation(obj);
+
+      newListForm.noValidate = true;
+
+      newListForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        if (newListInput.checkValidity()) {
+          const renameListButtons = [
+            ...document.querySelectorAll(".rename-list-button"),
+          ];
+          const index = renameListButtons.indexOf(renameButton);
+          obj.renameList(index, newListInput.value);
+
+          displayListLibrary(obj);
+          displayListPage(obj.library[index]);
+          displayTask(obj.library[index]);
+
+          newListInput.setCustomValidity("");
+
+          newListDialogEl.close();
+        } else {
+          newListInput.reportValidity();
+        }
+      });
     }
 
     if (deleteButton) {
@@ -150,14 +166,37 @@ function updateListHandler(obj) {
       const index = deleteButtonList.indexOf(deleteButton);
 
       obj.deleteList(index);
+
       if (!obj.library[0]) {
         document.querySelector("#page-list-display h2").textContent =
           "Add new List!";
         document.querySelector("#page-list-display button").remove();
       }
 
+      displayListPage(obj.library[index-1]);
+      displayTask(obj.library[index-1]);
+
       displayListLibrary(obj);
     }
     return;
+  });
+}
+
+function listNameValidation(obj) {
+  const newListInput = document.getElementById("new-list-input");
+
+  newListInput.addEventListener("input", (e) => {
+    const trimmedInput = newListInput.value.trim();
+    if (!trimmedInput) {
+      newListInput.setCustomValidity("Need a name for new List!");
+      newListInput.reportValidity();
+      return;
+    } else if (obj.library.map((el) => el.name).includes(newListInput.value)) {
+      newListInput.setCustomValidity("Already a List name");
+      newListInput.reportValidity();
+      return;
+    } else {
+      newListInput.setCustomValidity("");
+    }
   });
 }
