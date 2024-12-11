@@ -13,11 +13,11 @@ export default function updateTaskDialog() {
 
     const taskNameDiv = document.createElement('div');
     const taskNameLabel = document.createElement('label');
-    taskNameLabel.setAttribute('for', `update-task-name-input`);
+    taskNameLabel.setAttribute('for', `task-name-input`);
     taskNameLabel.textContent = 'Task Name';
     const taskNameInput = document.createElement('input');
     taskNameInput.setAttribute('type', 'text');
-    taskNameInput.setAttribute('id', `update-task-name-input`);
+    taskNameInput.setAttribute('id', `task-name-input`);
     taskNameInput.setAttribute('name', 'task-name-input');
     taskNameInput.required = true;
     taskNameDiv.appendChild(taskNameLabel);

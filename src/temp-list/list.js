@@ -1,6 +1,7 @@
 import newTaskDialog from "./newTaskDialog";
 import {Task, displayTask} from "../temp-task/task.js";
 import currentDate from "../currentDate.js";
+import taskNameValidation from "../temp-task/taskNameValidation.js";
 import infoButtonHandler from "../temp-task/infoButtonHandler.js";
 import deleteButtonHandler from "../temp-task/deleteButtonHandler.js";
 
@@ -56,23 +57,8 @@ function newTaskHandler(list) {
 
     newTaskDialogEl.showModal();
 
-    newTaskName.addEventListener("input", (e) => {
-      const trimmedInput = newTaskName.value.trim();
-      if (!trimmedInput) {
-        newTaskName.setCustomValidity("Need a name for new Task!");
-        newTaskName.reportValidity();
-        return;
-      } else if (
-        list.taskList.map((el) => el.name).includes(newTaskName.value)
-      ) {
-        newTaskName.setCustomValidity("Already a Task name!");
-        newTaskName.reportValidity();
-        return;
-      } else {
-        newTaskName.setCustomValidity("");
-      }
-    });
-
+    taskNameValidation(list)
+    
     newTaskDue.value = currentDate();
 
     newTaskForm.noValidate = true;

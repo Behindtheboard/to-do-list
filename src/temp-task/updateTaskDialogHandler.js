@@ -1,11 +1,9 @@
-import displayTask from "./displayTask";
-import infoButtonHandler from './infoButtonHandler.js';
-import deleteButtonHandler from './deleteButtonHandler.js';
+import {displayTask} from "./task";
 
 export default function updateTaskDialogHandler(obj, list, task) {
 
     const updateTaskPriorityDialog = document.getElementById(`update-task-dialog`);
-    const taskNameInput = document.getElementById(`update-task-name-input`);
+    const taskNameInput = document.getElementById(`task-name-input`);
     const prioritySelect = document.getElementById(`update-priority-input`);
     const dueDateInput = document.getElementById(`update-due-date-input`);
     const processedListName = transformName(list);
