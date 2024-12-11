@@ -1,7 +1,7 @@
 import newTaskDialog from "./newTaskDialog";
-import {Task, displayTask} from "../temp-task/task.js";
+import {Task, displayTask} from "../task/task.js";
 import currentDate from "../currentDate.js";
-import taskNameValidation from "../temp-task/taskNameValidation.js";
+import taskNameValidation from "../task/taskNameValidation.js";
 
 export function list(name) {
   let taskList = [];

@@ -1,6 +1,5 @@
-import { list } from "../temp-list/list.js";
-import { displayListPage } from "../temp-list/list.js";
-import { displayTask } from "../temp-task/task.js";
+import { list, displayListPage } from "../list/list.js";
+import { displayTask } from "../task/task.js";
 import newListDialog from "./newListDialog.js";
 
 export function listLibrary() {
@@ -129,6 +128,7 @@ function updateListHandler(obj) {
 
       document.getElementById("list-name-input").textContent =
         "Update List Name";
+      document.getElementById("add-list-button-dialog").textContent = "Update";
 
       newListDialogEl.showModal();
 
@@ -171,10 +171,10 @@ function updateListHandler(obj) {
         document.querySelector("#page-list-display h2").textContent =
           "Add new List!";
         document.querySelector("#page-list-display button").remove();
+      } else {
+        displayListPage(obj.library[index - 1]);
+        displayTask(obj.library[index - 1]);
       }
-
-      displayListPage(obj.library[index-1]);
-      displayTask(obj.library[index-1]);
 
       displayListLibrary(obj);
     }
