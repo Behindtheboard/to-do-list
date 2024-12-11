@@ -93,6 +93,8 @@ function newListHandler(obj) {
         newListInput.setCustomValidity("");
 
         displayListLibrary(obj);
+        displayListPage(newList);
+        displayTask(newList);
 
         newListDialogEl.close();
       } else {
@@ -149,7 +151,9 @@ function updateListHandler(obj) {
 
       obj.deleteList(index);
       if (!obj.library[0]) {
-        document.querySelector("#page-list-display h2").textContent = "Add new List!";
+        document.querySelector("#page-list-display h2").textContent =
+          "Add new List!";
+        document.querySelector("#page-list-display button").remove();
       }
 
       displayListLibrary(obj);
