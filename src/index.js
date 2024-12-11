@@ -1,13 +1,10 @@
 import "./style.css";
 import { list, displayListPage } from "./temp-list/list.js";
-import Task from "./temp-task/task.js";
-import displayTask from "./temp-task/displayTask.js";
+import { Task, displayTask } from "./temp-task/task.js";
 import {
   listLibrary,
   displayListLibrary,
 } from "./temp-listLibrary/listLibrary.js";
-import infoButtonHandler from "./temp-task/infoButtonHandler.js";
-import deleteButtonHandler from "./temp-task/deleteButtonHandler.js";
 import currentDate from "./currentDate.js";
 
 const toDoLists = listLibrary();
@@ -26,5 +23,3 @@ toDoLists.addList(defaultList);
 
 displayListLibrary(toDoLists);
 
-infoButtonHandler(toDoLists);
-deleteButtonHandler(toDoLists);

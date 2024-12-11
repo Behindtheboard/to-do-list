@@ -1,42 +1,88 @@
-export default class Task {
-    constructor(name) {
-        this.name = name;
-        this.done = false;
-        this.priority = 'Low';
-        this.dueDate = '';
-    }
+export class Task {
+  constructor(name) {
+    this.name = name;
+    this.done = false;
+    this.priority = "Low";
+    this.dueDate = "";
+  }
 
-    getName() {
-        return this.name;
-    }
+  getName() {
+    return this.name;
+  }
+  setName(newName) {
+    this.name = newName;
+  }
 
-    setName(newName) {
-        this.name = newName;
-    }
+  getDone() {
+    return this.done;
+  }
+  setDone() {
+    this.done = true;
+  }
+  undoDone() {
+    this.done = false;
+  }
 
-    getDone() {
-        return this.done;
-    }
-    setDone() {
-        this.done = true;
-    }
-    undoDone() {
-        this.done = false;
-    }
+  getPriority() {
+    return this.priority;
+  }
+  setPriority(level) {
+    this.priority = level;
+  }
 
-    getPriority() {
-        return this.priority;
-    }
-    setPriority(level) {
-        this.priority = level;
-    }
+  getDueDate() {
+    return this.dueDate;
+  }
+  setDueDate(date) {
+    this.dueDate = date;
+  }
+}
 
-    getDueDate() {
-        return this.dueDate;
-    }
-    setDueDate(date) {
-        this.dueDate = date;
-    }
+export function displayTask(list) {
+  const tasksContainer = document.querySelector(`#tasks-container`);
+  tasksContainer.innerHTML = "";
 
+  list.taskList.forEach((task) => {
+    const taskDisplay = document.createElement("div");
+    taskDisplay.classList.add("task-display");
+    tasksContainer.appendChild(taskDisplay);
 
+    const taskCheckbox = document.createElement("input");
+    taskCheckbox.setAttribute("type", "checkbox");
+    taskCheckbox.classList.add(`checkbox`);
+    taskCheckbox.setAttribute("value", "true");
+    taskDisplay.appendChild(taskCheckbox);
+
+    const taskName = document.createElement("div");
+    taskName.classList.add(`task-name`);
+    taskName.textContent = task.getName();
+    taskDisplay.appendChild(taskName);
+
+    const taskPriorityDisplay = document.createElement("div");
+    taskPriorityDisplay.classList.add(`priority-display`);
+    taskPriorityDisplay.textContent = task.getPriority();
+    taskDisplay.appendChild(taskPriorityDisplay);
+
+    const taskDueDateDisplay = document.createElement("div");
+    taskDueDateDisplay.classList.add(`due-date-display`);
+    taskDueDateDisplay.textContent = task.getDueDate();
+    taskDisplay.appendChild(taskDueDateDisplay);
+
+    const infoButton = document.createElement("button");
+    infoButton.classList.add("info-button");
+    infoButton.textContent = "i";
+    taskDisplay.appendChild(infoButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.textContent = "Delete";
+    taskDisplay.appendChild(deleteButton);
+  });
+
+  taskHandler(list);
+}
+
+function taskHandler() {
+  const tasksContainer = document.querySelector(`#tasks-container`);
+  tasksContainer.addEventListener("click", (e) => {});
 }

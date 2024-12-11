@@ -1,6 +1,6 @@
 import { list } from "../temp-list/list.js";
 import { displayListPage } from "../temp-list/list.js";
-import displayTask from "../temp-task/displayTask.js";
+import { displayTask } from "../temp-task/task.js";
 import newListDialog from "./newListDialog.js";
 
 export function listLibrary() {
@@ -97,7 +97,7 @@ function listLibraryHandler(obj) {
 
   newlistLibraryDisplay.addEventListener("click", (e) => {
     const clickedButton = e.target.closest(".list-button");
-    const listButtons = [...document.querySelectorAll(".list-button")]
+    const listButtons = [...document.querySelectorAll(".list-button")];
     const index = listButtons.indexOf(clickedButton);
     displayListPage(obj.library[index]);
     displayTask(obj.library[index]);

@@ -1,6 +1,5 @@
 import newTaskDialog from "./newTaskDialog";
-import Task from "../temp-task/task.js";
-import displayTask from "../temp-task/displayTask.js";
+import {Task, displayTask} from "../temp-task/task.js";
 import currentDate from "../currentDate.js";
 import infoButtonHandler from "../temp-task/infoButtonHandler.js";
 import deleteButtonHandler from "../temp-task/deleteButtonHandler.js";
@@ -21,8 +20,7 @@ export function list(name) {
 }
 
 export function displayListPage(list, obj) {
-  const container = document.getElementById("container");
-  container.innerHTML = "";
+  document.getElementById("container").innerHTML = "";
 
   const listPageDisplay = document.createElement("div");
   listPageDisplay.setAttribute("id", `page-list-display`);
