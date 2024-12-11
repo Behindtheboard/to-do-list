@@ -9,9 +9,9 @@ import {
 const toDoLists = listLibrary();
 
 const defaultList = list("Default");
-displayListLibrary(toDoLists);
 
 toDoLists.addList(defaultList);
 
+displayListLibrary(toDoLists);
 displayListPage(defaultList, toDoLists);
 displayTask(defaultList);

@@ -13,20 +13,42 @@ export function listLibrary() {
   const getLibrary = function () {
     return library;
   };
-  return { library, getLibrary, addList };
+
+  const deleteList = function (index) {
+    library.splice(index, 1);
+  };
+
+  return { library, getLibrary, addList, deleteList };
 }
 
 export function displayListLibrary(obj) {
   const listLibraryDisplay = document.getElementById("list-library-display");
+  listLibraryDisplay.innerHTML = "";
 
   obj.library.forEach((list) => {
-    const listSidebar = document.createElement("button");
-    listSidebar.classList.add("list-button");
-    listSidebar.textContent = list.name;
-    listLibraryDisplay.appendChild(listSidebar);
+    const listButton = document.createElement("button");
+    listButton.classList.add("list-button");
+    listButton.textContent = list.name;
+    listLibraryDisplay.appendChild(listButton);
+
+    const inButtons = document.createElement("div");
+    listButton.classList.add("in-buttons");
+    listButton.appendChild(inButtons);
+
+    const listRename = document.createElement("button");
+    listRename.classList.add("rename-list-button");
+    listRename.textContent = "i";
+    inButtons.appendChild(listRename);
+
+    const listDelete = document.createElement("button");
+    listDelete.classList.add("delete-list-button");
+    listDelete.textContent = "Delete";
+    inButtons.appendChild(listDelete);
   });
 
+  listLibraryHandler(obj);
   newListHandler(obj);
+  updateListHandler(obj);
 }
 
 function newListHandler(obj) {
@@ -70,9 +92,7 @@ function newListHandler(obj) {
         newListInput.value = "";
         newListInput.setCustomValidity("");
 
-        document.getElementById("list-library-display").innerHTML = "";
         displayListLibrary(obj);
-        listLibraryHandler(obj);
 
         newListDialogEl.close();
       } else {
@@ -102,5 +122,38 @@ function listLibraryHandler(obj) {
     const index = listButtons.indexOf(clickedButton);
     displayListPage(obj.library[index]);
     displayTask(obj.library[index]);
+  });
+}
+
+function updateListHandler(obj) {
+  const listLibraryDisplay = document.getElementById("list-library-display");
+
+  listLibraryDisplay.addEventListener("click", (e) => {
+    const renameButton = e.target.closest(".rename-list-button");
+    const deleteButton = e.target.closest(".delete-list-button");
+
+    if (renameButton) {
+      document.getElementById("dialog").innerHTML = "";
+      newListDialog();
+
+      const newListDialogEl = document.getElementById("new-list-dialog");
+
+      newListDialogEl.showModal();
+    }
+
+    if (deleteButton) {
+      const deleteButtonList = [
+        ...document.querySelectorAll(".delete-list-button"),
+      ];
+      const index = deleteButtonList.indexOf(deleteButton);
+
+      obj.deleteList(index);
+      if (!obj.library[0]) {
+        document.querySelector("#page-list-display h2").textContent = "Add new List!";
+      }
+
+      displayListLibrary(obj);
+    }
+    return;
   });
 }
