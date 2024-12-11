@@ -10,15 +10,14 @@ export function list(name) {
     taskList.push(task);
   };
 
-  const deleteTask = function (task) {
-    const index = taskList.findIndex((item) => item.name != task.name);
-    taskList.splice(index - 1, 1);
+  const deleteTask = function (index) {
+    taskList.splice(index, 1);
   };
 
   return { name, taskList, newTask, deleteTask };
 }
 
-export function displayListPage(list, obj) {
+export function displayListPage(list) {
   document.getElementById("container").innerHTML = "";
 
   const listPageDisplay = document.createElement("div");

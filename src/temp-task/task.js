@@ -1,3 +1,4 @@
+import { displayListPage } from "../temp-list/list";
 import updateTaskDialog from "./updateTaskDialog";
 import updateTaskDialogHandler from "./updateTaskDialogHandler";
 export class Task {
@@ -96,15 +97,20 @@ function taskHandler(list) {
     if (infoButton) {
       updateTaskDialog();
       document.getElementById("update-task-dialog").showModal();
-      
+
       const infoButtonList = [...document.querySelectorAll(".info-button")];
       const infoButtonIndex = infoButtonList.indexOf(infoButton);
-        
-      updateTaskDialogHandler(list, infoButtonIndex)
+
+      updateTaskDialogHandler(list, infoButtonIndex);
     }
 
     if (deleteButton) {
-      console.log(e.target.className);
+      const deleteButtonList = [...document.querySelectorAll(".delete-button")];
+      const deleteButtonIndex = deleteButtonList.indexOf(deleteButton);
+
+      list.deleteTask(deleteButtonIndex);
+
+      displayTask(list);
     }
     return;
   });
