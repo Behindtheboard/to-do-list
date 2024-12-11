@@ -83,8 +83,8 @@ function newTaskHandler(list) {
         const newTask = new Task(newTaskName.value);
         newTask.setPriority(newTaskPrio.value);
         newTask.setDueDate(newTaskDue.value);
-
         list.newTask(newTask);
+
         document.getElementById(`tasks-container`).innerHTML = "";
         displayTask(list);
 

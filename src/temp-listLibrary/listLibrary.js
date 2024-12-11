@@ -97,6 +97,7 @@ function listLibraryHandler(obj) {
 
   newlistLibraryDisplay.addEventListener("click", (e) => {
     const clickedButton = e.target.closest(".list-button");
+    if (!clickedButton) return;
     const listButtons = [...document.querySelectorAll(".list-button")];
     const index = listButtons.indexOf(clickedButton);
     displayListPage(obj.library[index]);

@@ -83,7 +83,7 @@ export function displayTask(list) {
   taskHandler(list);
 }
 
-function taskHandler() {
+function taskHandler(list) {
   const tasksContainer = document.querySelector(`#tasks-container`);
   const newtasksContainer = tasksContainer.cloneNode(true);
   tasksContainer.parentNode.replaceChild(newtasksContainer, tasksContainer);
@@ -98,6 +98,8 @@ function taskHandler() {
       
       const infoButtonList = [...document.querySelectorAll(".info-button")];
       const infoButtonIndex = infoButtonList.indexOf(infoButton);
+        
+      console.log(infoButtonIndex)
     }
 
     if (deleteButton) {
