@@ -2,8 +2,6 @@ import newTaskDialog from "./newTaskDialog";
 import {Task, displayTask} from "../temp-task/task.js";
 import currentDate from "../currentDate.js";
 import taskNameValidation from "../temp-task/taskNameValidation.js";
-import infoButtonHandler from "../temp-task/infoButtonHandler.js";
-import deleteButtonHandler from "../temp-task/deleteButtonHandler.js";
 
 export function list(name) {
   let taskList = [];
@@ -71,7 +69,6 @@ function newTaskHandler(list) {
         newTask.setDueDate(newTaskDue.value);
         list.newTask(newTask);
 
-        document.getElementById(`tasks-container`).innerHTML = "";
         displayTask(list);
 
         newTaskDialogEl.close();

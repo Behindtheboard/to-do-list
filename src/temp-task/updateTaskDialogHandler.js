@@ -1,30 +1,40 @@
-import {displayTask} from "./task";
+import { displayTask } from "./task";
+import taskNameValidation from "./taskNameValidation";
 
-export default function updateTaskDialogHandler(obj, list, task) {
+export default function updateTaskDialogHandler(list, index) {
+  const updateTaskDialog = document.getElementById(`update-task-dialog`);
+  const updateTaskForm = document.getElementById("update-task-form");
+  const taskNameInput = document.getElementById(`task-name-input`);
+  const prioritySelect = document.getElementById(`update-priority-input`);
+  const dueDateInput = document.getElementById(`update-due-date-input`);
+  const task = list.taskList[index];
 
-    const updateTaskPriorityDialog = document.getElementById(`update-task-dialog`);
-    const taskNameInput = document.getElementById(`task-name-input`);
-    const prioritySelect = document.getElementById(`update-priority-input`);
-    const dueDateInput = document.getElementById(`update-due-date-input`);
-    const processedListName = transformName(list);
+  taskNameValidation(list);
 
-    document.querySelector('#update-nvm-button').addEventListener('click', () => {
-        updateTaskPriorityDialog.close();
-    });
+  taskNameInput.value = task.getName();
+  prioritySelect.value = task.getPriority();
+  dueDateInput.value = task.getDueDate();
 
-    document.querySelector(`#update-task-button`).addEventListener('click', () => {
+  updateTaskForm.noValidate = true;
 
-        if (task.getName() !== taskNameInput.value) {
-            task.setName(taskNameInput.value);
-        }
-        if (task.getPriority() !== prioritySelect.value) {
-            task.setPriority(prioritySelect.value);
-        }
-        if (task.getDueDate() !== dueDateInput.value) {
-            task.setDueDate(dueDateInput.value);
-        }
-        
-        document.querySelector(`#${processedListName}-task-display`).innerHTML = '';
-        displayTask(list);
+  updateTaskForm.addEventListener("submit", () => {
+    if (taskNameInput.checkValidity()) {
+      task.setName(taskNameInput.value);
+      task.setPriority(prioritySelect.value);
+      task.setDueDate(dueDateInput.value);
+    } else {
+      taskNameInput.reportValidity();
+    }
+
+    displayTask(list);
+
+    updateTaskDialog.close();
+  });
+
+  document
+    .querySelector("#update-nvm-button")
+    .addEventListener("click", (e) => {
+      e.preventDefault();
+      updateTaskDialog.close();
     });
 }

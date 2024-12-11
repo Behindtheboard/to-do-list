@@ -1,4 +1,5 @@
 import updateTaskDialog from "./updateTaskDialog";
+import updateTaskDialogHandler from "./updateTaskDialogHandler";
 export class Task {
   constructor(name) {
     this.name = name;
@@ -40,7 +41,7 @@ export class Task {
 }
 
 export function displayTask(list) {
-  const tasksContainer = document.querySelector(`#tasks-container`);
+  const tasksContainer = document.getElementById(`tasks-container`);
   tasksContainer.innerHTML = "";
 
   list.taskList.forEach((task) => {
@@ -99,7 +100,7 @@ function taskHandler(list) {
       const infoButtonList = [...document.querySelectorAll(".info-button")];
       const infoButtonIndex = infoButtonList.indexOf(infoButton);
         
-      console.log(infoButtonIndex)
+      updateTaskDialogHandler(list, infoButtonIndex)
     }
 
     if (deleteButton) {
