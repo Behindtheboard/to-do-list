@@ -1,3 +1,4 @@
+import updateTaskDialog from "./updateTaskDialog";
 export class Task {
   constructor(name) {
     this.name = name;
@@ -84,5 +85,24 @@ export function displayTask(list) {
 
 function taskHandler() {
   const tasksContainer = document.querySelector(`#tasks-container`);
-  tasksContainer.addEventListener("click", (e) => {});
+  const newtasksContainer = tasksContainer.cloneNode(true);
+  tasksContainer.parentNode.replaceChild(newtasksContainer, tasksContainer);
+
+  newtasksContainer.addEventListener("click", (e) => {
+    const infoButton = e.target.closest(".info-button");
+    const deleteButton = e.target.closest(".delete-button");
+
+    if (infoButton) {
+      updateTaskDialog();
+      document.getElementById("update-task-dialog").showModal();
+      
+      const infoButtonList = [...document.querySelectorAll(".info-button")];
+      const infoButtonIndex = infoButtonList.indexOf(infoButton);
+    }
+
+    if (deleteButton) {
+      console.log(e.target.className);
+    }
+    return;
+  });
 }

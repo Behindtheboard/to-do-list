@@ -1,11 +1,15 @@
 export default function updateTaskDialog(processedTaskName) {
-    const updateTaskPriorityDialog = document.createElement('dialog');
-    updateTaskPriorityDialog.setAttribute('id', `${processedTaskName}-update-task-priority-dialog`);
-    document.querySelector('#container').appendChild(updateTaskPriorityDialog);
-    const updateTaskPriorityForm = document.createElement('form');
-    updateTaskPriorityForm.setAttribute('method', 'dialog');
-    updateTaskPriorityForm.setAttribute('id', 'update-task-priority-form');
-    updateTaskPriorityDialog.appendChild(updateTaskPriorityForm);
+    const dialog = document.getElementById('dialog')
+    dialog.innerHTML = '';
+    
+    const updateTaskDialog = document.createElement('dialog');
+    updateTaskDialog.setAttribute('id', `update-task-dialog`);
+    dialog.appendChild(updateTaskDialog);
+    
+    const updateTaskForm = document.createElement('form');
+    updateTaskForm.setAttribute('method', 'dialog');
+    updateTaskForm.setAttribute('id', 'update-task-form');
+    updateTaskDialog.appendChild(updateTaskForm);
 
     const taskNameDiv = document.createElement('div');
     const taskNameLabel = document.createElement('label');
@@ -68,8 +72,8 @@ export default function updateTaskDialog(processedTaskName) {
     buttonDiv.appendChild(addTaskButton);
     buttonDiv.appendChild(nvmButton);
 
-    updateTaskPriorityForm.appendChild(taskNameDiv);
-    updateTaskPriorityForm.appendChild(priorityDiv);
-    updateTaskPriorityForm.appendChild(dateDiv);
-    updateTaskPriorityForm.appendChild(buttonDiv);
+    updateTaskForm.appendChild(taskNameDiv);
+    updateTaskForm.appendChild(priorityDiv);
+    updateTaskForm.appendChild(dateDiv);
+    updateTaskForm.appendChild(buttonDiv);
 }

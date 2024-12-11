@@ -39,10 +39,10 @@ export function displayListPage(list, obj) {
   newTaskButton.textContent = "New Task";
   listPageDisplay.appendChild(newTaskButton);
 
-  newTaskHandler(obj, list);
+  newTaskHandler(list);
 }
 
-function newTaskHandler(obj, list) {
+function newTaskHandler(list) {
   document.querySelector("#new-task-button").addEventListener("click", () => {
     document.getElementById("dialog").innerHTML = "";
 
@@ -87,8 +87,6 @@ function newTaskHandler(obj, list) {
         list.newTask(newTask);
         document.getElementById(`tasks-container`).innerHTML = "";
         displayTask(list);
-        infoButtonHandler(obj);
-        deleteButtonHandler(obj);
 
         newTaskDialogEl.close();
       } else {
