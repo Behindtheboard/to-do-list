@@ -1,7 +1,8 @@
 import newTaskDialog from "./newTaskDialog";
-import {Task, displayTask} from "../task/task.js";
+import { Task, displayTask } from "../task/task.js";
 import currentDate from "../currentDate.js";
 import taskNameValidation from "../task/taskNameValidation.js";
+import {saveToLocalStorage} from "../index.js";
 
 export function list(name) {
   let taskList = [];
@@ -17,7 +18,7 @@ export function list(name) {
   return { name, taskList, newTask, deleteTask };
 }
 
-export function displayListPage(list) {
+export function displayListPage(list, obj) {
   document.getElementById("container").innerHTML = "";
 
   const listPageDisplay = document.createElement("div");
@@ -37,10 +38,10 @@ export function displayListPage(list) {
   newTaskButton.textContent = "New Task";
   listPageDisplay.appendChild(newTaskButton);
 
-  newTaskHandler(list);
+  newTaskHandler(list, obj);
 }
 
-function newTaskHandler(list) {
+function newTaskHandler(list, obj) {
   document.querySelector("#new-task-button").addEventListener("click", () => {
     document.getElementById("dialog").innerHTML = "";
 
@@ -54,8 +55,8 @@ function newTaskHandler(list) {
 
     newTaskDialogEl.showModal();
 
-    taskNameValidation(list)
-    
+    taskNameValidation(list);
+
     newTaskDue.value = currentDate();
 
     newTaskForm.noValidate = true;
@@ -68,7 +69,9 @@ function newTaskHandler(list) {
         newTask.setDueDate(newTaskDue.value);
         list.newTask(newTask);
 
-        displayTask(list);
+        displayTask(list, obj);
+
+        saveToLocalStorage(obj);
 
         newTaskDialogEl.close();
       } else {

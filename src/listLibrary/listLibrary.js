@@ -1,6 +1,7 @@
 import { list, displayListPage } from "../list/list.js";
 import { displayTask } from "../task/task.js";
 import newListDialog from "./newListDialog.js";
+import { saveToLocalStorage } from "../index.js";
 
 export function listLibrary() {
   const library = [];
@@ -77,8 +78,10 @@ function newListHandler(obj) {
         newListInput.setCustomValidity("");
 
         displayListLibrary(obj);
-        displayListPage(newList);
-        displayTask(newList);
+        displayListPage(newList, obj);
+        displayTask(newList, obj);
+
+        saveToLocalStorage(obj);
 
         newListDialogEl.close();
       } else {
@@ -106,8 +109,8 @@ function listLibraryHandler(obj) {
     if (!clickedButton) return;
     const listButtons = [...document.querySelectorAll(".list-button")];
     const index = listButtons.indexOf(clickedButton);
-    displayListPage(obj.library[index]);
-    displayTask(obj.library[index]);
+    displayListPage(obj.library[index], obj);
+    displayTask(obj.library[index], obj);
   });
 }
 
@@ -147,10 +150,12 @@ function updateListHandler(obj) {
           obj.renameList(index, newListInput.value);
 
           displayListLibrary(obj);
-          displayListPage(obj.library[index]);
-          displayTask(obj.library[index]);
+          displayListPage(obj.library[index], obj);
+          displayTask(obj.library[index], obj);
 
           newListInput.setCustomValidity("");
+
+          saveToLocalStorage(obj);
 
           newListDialogEl.close();
         } else {
@@ -172,11 +177,13 @@ function updateListHandler(obj) {
           "Add new List!";
         document.querySelector("#page-list-display button").remove();
       } else {
-        displayListPage(obj.library[index - 1]);
-        displayTask(obj.library[index - 1]);
+        displayListPage(obj.library[index - 1], obj);
+        displayTask(obj.library[index - 1], obj);
       }
 
       displayListLibrary(obj);
+
+      saveToLocalStorage(obj);
     }
     return;
   });

@@ -1,7 +1,8 @@
 import { displayTask } from "./task";
 import taskNameValidation from "./taskNameValidation";
+import { saveToLocalStorage } from "../index.js";
 
-export default function updateTaskDialogHandler(list, index) {
+export default function updateTaskDialogHandler(list, index, obj) {
   const updateTaskDialog = document.getElementById(`update-task-dialog`);
   const updateTaskForm = document.getElementById("update-task-form");
   const taskNameInput = document.getElementById(`task-name-input`);
@@ -26,7 +27,9 @@ export default function updateTaskDialogHandler(list, index) {
       taskNameInput.reportValidity();
     }
 
-    displayTask(list);
+    displayTask(list, obj);
+
+    saveToLocalStorage(obj);
 
     updateTaskDialog.close();
   });

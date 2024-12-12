@@ -1,5 +1,6 @@
 import updateTaskDialog from "./updateTaskDialog";
 import updateTaskDialogHandler from "./updateTaskDialogHandler";
+import {saveToLocalStorage} from "../index.js"
 export class Task {
   constructor(name) {
     this.name = name;
@@ -40,7 +41,7 @@ export class Task {
   }
 }
 
-export function displayTask(list) {
+export function displayTask(list, obj) {
   const tasksContainer = document.getElementById(`tasks-container`);
   tasksContainer.innerHTML = "";
 
@@ -81,10 +82,10 @@ export function displayTask(list) {
     taskDisplay.appendChild(deleteButton);
   });
 
-  taskHandler(list);
+  taskHandler(list, obj);
 }
 
-function taskHandler(list) {
+function taskHandler(list, obj) {
   const tasksContainer = document.querySelector(`#tasks-container`);
   const newtasksContainer = tasksContainer.cloneNode(true);
   tasksContainer.parentNode.replaceChild(newtasksContainer, tasksContainer);
@@ -100,7 +101,7 @@ function taskHandler(list) {
       const infoButtonList = [...document.querySelectorAll(".info-button")];
       const infoButtonIndex = infoButtonList.indexOf(infoButton);
 
-      updateTaskDialogHandler(list, infoButtonIndex);
+      updateTaskDialogHandler(list, infoButtonIndex, obj);
     }
 
     if (deleteButton) {
@@ -110,6 +111,8 @@ function taskHandler(list) {
       list.deleteTask(deleteButtonIndex);
 
       displayTask(list);
+
+      saveToLocalStorage(obj)
     }
     return;
   });
